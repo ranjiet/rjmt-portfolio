@@ -1,0 +1,8 @@
+node_modules/
+_site/
+.cache/
+.env
+.env.*
+*.log
+.obsidian/
+**/.obsidian/

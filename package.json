@@ -1,0 +1,16 @@
+{
+  "name": "tb",
+  "version": "1.0.0",
+  "description": "Static portfolio website for rjmtechservices.com, built with Eleventy and hosted on Cloudflare Pages.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

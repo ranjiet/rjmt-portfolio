@@ -1,0 +1,23 @@
+{
+  "name": "RJM Tech Services",
+  "email": "rj@rjmtechservices.com",
+  "description": "RJM Tech Services helps sales and growth teams improve CRM systems, automate workflows, document processes, and build practical operational tools.",
+  "nav": [
+    {
+      "label": "Services",
+      "url": "#services"
+    },
+    {
+      "label": "Projects",
+      "url": "#projects"
+    },
+    {
+      "label": "About",
+      "url": "#about"
+    },
+    {
+      "label": "Contact",
+      "url": "#contact"
+    }
+  ]
+}

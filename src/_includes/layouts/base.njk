@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark">RJM</span>
+      <span class="brand-text">Tech Services</span>
+    </a>
+
+    <nav class="nav">
+      {% for item in site.nav %}
+        <a{% if item.label == "Contact" %} class="nav-cta"{% endif %} href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> RJM Tech Services. Practical systems, human-friendly workflows.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

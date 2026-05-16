@@ -1,0 +1,91 @@
+---
+layout: layouts/base.njk
+title: RJM Tech Services | Practical Systems, Cleaner Workflows
+description: RJM Tech Services helps sales and growth teams improve CRM systems, automate workflows, document processes, and build practical operational tools.
+---
+
+{% set hero = collections.all | findByFileSlug("hero") %}
+{% set servicesPage = collections.all | findByFileSlug("services") %}
+{% set about = collections.all | findByFileSlug("about") %}
+{% set contact = collections.all | findByFileSlug("contact") %}
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">{{ hero.data.eyebrow }}</p>
+    <h1>{{ hero.data.headline }}</h1>
+
+    <div class="hero-copy">
+      {{ hero.templateContent | safe }}
+    </div>
+
+    <div class="hero-actions">
+      <a class="button primary" href="#projects">View Projects</a>
+      <a class="button secondary" href="#services">Explore Services</a>
+    </div>
+  </div>
+
+  <aside class="hero-card">
+    <p class="card-label">Focus Areas</p>
+    <ul>
+      {% for item in hero.data.focusAreas %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </aside>
+</section>
+
+<section id="services" class="section">
+  <div class="section-heading">
+    <p class="eyebrow">{{ servicesPage.data.eyebrow }}</p>
+    <h2>{{ servicesPage.data.headline }}</h2>
+  </div>
+
+  <div class="grid cards">
+    {% for service in collections.services %}
+      <article class="card">
+        <h3>{{ service.data.title }}</h3>
+        {{ service.templateContent | safe }}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="projects" class="section alt">
+  <div class="section-heading">
+    <p class="eyebrow">Featured Projects</p>
+    <h2>Proof-of-work, not buzzword confetti.</h2>
+  </div>
+
+  <div class="project-list">
+    {% for project in collections.projects %}
+      <article class="project">
+        <div>
+          <p class="project-kicker">{{ project.data.kicker }}</p>
+          <h3>{{ project.data.title }}</h3>
+        </div>
+        <div>
+          {{ project.templateContent | safe }}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div class="section-heading">
+    <p class="eyebrow">{{ about.data.eyebrow }}</p>
+    <h2>{{ about.data.headline }}</h2>
+  </div>
+
+  {{ about.templateContent | safe }}
+</section>
+
+<section id="contact" class="section contact">
+  <div>
+    <p class="eyebrow">{{ contact.data.eyebrow }}</p>
+    <h2>{{ contact.data.headline }}</h2>
+    {{ contact.templateContent | safe }}
+  </div>
+
+  <a class="button primary" href="mailto:{{ contact.data.email }}">{{ contact.data.email }}</a>
+</section>
