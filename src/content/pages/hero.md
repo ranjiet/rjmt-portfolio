@@ -9,5 +9,4 @@ focusAreas:
   - AI-assisted thought capture, knowledge storage, and retrieval
 permalink: false
 ---
-
 I help sales and growth teams turn scattered customer data, CRM friction, manual follow-up, and disconnected processes into cleaner systems, better visibility, and smarter workflows.
