@@ -11,6 +11,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("home", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/content/home/*.md").sort(function(a, b) {
+      return a.data.order - b.data.order;
+    });
+  });
+
   eleventyConfig.addCollection("services", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/content/services/*.md").sort(function(a, b) {
       return a.data.order - b.data.order;

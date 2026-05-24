@@ -1,91 +1,335 @@
 ---
 layout: layouts/base.njk
-title: RJM Tech Services | Practical Systems, Cleaner Workflows
-description: RJM Tech Services helps sales and growth teams improve CRM systems, automate workflows, document processes, and build practical operational tools.
+title: RJM Tech Services | Practical CRM Systems & Trusted Automation
+description: RJM Tech Services helps teams turn messy CRM data, manual processes, fragile workflows, and operational blind spots into practical systems they can trust.
 ---
 
-{% set hero = collections.all | findByFileSlug("hero") %}
-{% set servicesPage = collections.all | findByFileSlug("services") %}
+{% set hero = collections.home | findByFileSlug("hero") %}
+{% set problem = collections.home | findByFileSlug("problem-pain-point") %}
+{% set whatIDo = collections.home | findByFileSlug("what-i-do") %}
+{% set showcase = collections.home | findByFileSlug("showcase") %}
+{% set howIThink = collections.home | findByFileSlug("how-i-think") %}
+{% set whoFor = collections.home | findByFileSlug("who-this-is-for") %}
 {% set about = collections.all | findByFileSlug("about") %}
 {% set contact = collections.all | findByFileSlug("contact") %}
 
-<section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow">{{ hero.data.eyebrow }}</p>
-    <h1>{{ hero.data.headline }}</h1>
+{% if not whoFor %}
+  {% set whoFor = collections.home | findByFileSlug("who-for") %}
+{% endif %}
 
-    <div class="hero-copy">
-      {{ hero.templateContent | safe }}
+{% if hero %}
+  <section class="hero">
+    <div class="hero-content">
+      {% if hero.data.eyebrow %}
+        <p class="eyebrow">{{ hero.data.eyebrow }}</p>
+      {% endif %}
+
+      {% if hero.data.headline %}
+        <h1>{{ hero.data.headline }}</h1>
+      {% endif %}
+
+      <div class="hero-lower">
+        {% if hero.data.subheadline %}
+          <p class="hero-copy">{{ hero.data.subheadline }}</p>
+        {% endif %}
+
+        {% if hero.templateContent %}
+          <div class="hero-copy">
+            {{ hero.templateContent | safe }}
+          </div>
+        {% endif %}
+
+        <div class="hero-actions">
+          {% if hero.data.primaryCtaLabel and hero.data.primaryCtaUrl %}
+            <a class="button primary" href="{{ hero.data.primaryCtaUrl }}">
+              {{ hero.data.primaryCtaLabel }}
+            </a>
+          {% else %}
+            <a class="button primary" href="#projects">View Systems Built</a>
+          {% endif %}
+
+          {% if hero.data.secondaryCtaLabel and hero.data.secondaryCtaUrl %}
+            <a class="button secondary" href="{{ hero.data.secondaryCtaUrl }}">
+              {{ hero.data.secondaryCtaLabel }}
+            </a>
+          {% else %}
+            <a class="button secondary" href="#contact">Start a Conversation</a>
+          {% endif %}
+        </div>
+      </div>
     </div>
 
-    <div class="hero-actions">
-      <a class="button primary" href="#projects">View Projects</a>
-      <a class="button secondary" href="#services">Explore Services</a>
+    {% if hero.data.focusAreas %}
+      <aside class="hero-card">
+        <p class="card-label">Focus Areas</p>
+        <ul>
+          {% for item in hero.data.focusAreas %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </aside>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% if problem or whatIDo %}
+  <section class="section alt home-two-up-section">
+    <div class="home-two-up">
+      {% if problem %}
+        <article id="problem" class="home-two-up-panel">
+          <div class="section-heading">
+            {% if problem.data.eyebrow %}
+              <p class="eyebrow">{{ problem.data.eyebrow }}</p>
+            {% endif %}
+
+            {% if problem.data.headline %}
+              <h2>{{ problem.data.headline }}</h2>
+            {% endif %}
+          </div>
+
+          {% if problem.templateContent %}
+            <div class="about section-copy">
+              {{ problem.templateContent | safe }}
+            </div>
+          {% endif %}
+
+          {% if problem.data.painPoints %}
+            <div class="grid cards compact-cards">
+              {% for point in problem.data.painPoints %}
+                <article class="card">
+                  <p>{{ point }}</p>
+                </article>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% endif %}
+
+      {% if whatIDo %}
+        <article id="services" class="home-two-up-panel">
+          <div class="section-heading">
+            {% if whatIDo.data.eyebrow %}
+              <p class="eyebrow">{{ whatIDo.data.eyebrow }}</p>
+            {% endif %}
+
+            {% if whatIDo.data.headline %}
+              <h2>{{ whatIDo.data.headline }}</h2>
+            {% endif %}
+          </div>
+
+          {% if whatIDo.templateContent %}
+            <div class="about section-copy">
+              {{ whatIDo.templateContent | safe }}
+            </div>
+          {% endif %}
+
+          {% if whatIDo.data.capabilities %}
+            <div class="grid cards compact-cards">
+              {% for capability in whatIDo.data.capabilities %}
+                <article class="card">
+                  <h3>{{ capability.title }}</h3>
+                  <p>{{ capability.summary }}</p>
+                </article>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="grid cards compact-cards">
+              {% for service in collections.services %}
+                <article class="card">
+                  <h3>{{ service.data.title }}</h3>
+                  {{ service.templateContent | safe }}
+                </article>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% endif %}
     </div>
-  </div>
+  </section>
+{% endif %}
 
-  <aside class="hero-card">
-    <p class="card-label">Focus Areas</p>
-    <ul>
-      {% for item in hero.data.focusAreas %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
-  </aside>
-</section>
+{% if showcase %}
+  <section id="projects" class="section alt">
+    <div class="section-heading">
+      {% if showcase.data.eyebrow %}
+        <p class="eyebrow">{{ showcase.data.eyebrow }}</p>
+      {% endif %}
 
-<section id="services" class="section">
-  <div class="section-heading">
-    <p class="eyebrow">{{ servicesPage.data.eyebrow }}</p>
-    <h2>{{ servicesPage.data.headline }}</h2>
-  </div>
+      {% if showcase.data.headline %}
+        <h2>{{ showcase.data.headline }}</h2>
+      {% endif %}
 
-  <div class="grid cards">
-    {% for service in collections.services %}
-      <article class="card">
-        <h3>{{ service.data.title }}</h3>
-        {{ service.templateContent | safe }}
-      </article>
-    {% endfor %}
-  </div>
-</section>
+      {% if showcase.data.sectionIntro %}
+        <p class="hero-copy">{{ showcase.data.sectionIntro }}</p>
+      {% endif %}
+    </div>
 
-<section id="projects" class="section alt">
-  <div class="section-heading">
-    <p class="eyebrow">Featured Projects</p>
-    <h2>Proof-of-work, not buzzword confetti.</h2>
-  </div>
+    {% if showcase.data.systemGroups %}
+      <div class="project-list">
+        {% for group in showcase.data.systemGroups %}
+          <article class="project">
+            <div>
+              {% if group.groupTitle %}
+                <p class="project-kicker">{{ group.groupTitle }}</p>
+              {% endif %}
 
-  <div class="project-list">
-    {% for project in collections.projects %}
-      <article class="project">
-        <div>
-          <p class="project-kicker">{{ project.data.kicker }}</p>
-          <h3>{{ project.data.title }}</h3>
-        </div>
-        <div>
-          {{ project.templateContent | safe }}
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-</section>
+              {% if group.groupSummary %}
+                <h3>{{ group.groupSummary }}</h3>
+              {% endif %}
+            </div>
 
-<section id="about" class="section about">
-  <div class="section-heading">
-    <p class="eyebrow">{{ about.data.eyebrow }}</p>
-    <h2>{{ about.data.headline }}</h2>
-  </div>
+            <div>
+              {% if group.systems %}
+                <div class="grid cards">
+                  {% for system in group.systems %}
+                    <article class="card">
+                      <h3>{{ system.title }}</h3>
+                      <p>{{ system.summary }}</p>
+                    </article>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="project-list">
+        {% for project in collections.projects %}
+          <article class="project">
+            <div>
+              <p class="project-kicker">{{ project.data.kicker }}</p>
+              <h3>{{ project.data.title }}</h3>
+            </div>
 
-  {{ about.templateContent | safe }}
-</section>
+            <div>
+              {{ project.templateContent | safe }}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
 
-<section id="contact" class="section contact">
-  <div>
-    <p class="eyebrow">{{ contact.data.eyebrow }}</p>
-    <h2>{{ contact.data.headline }}</h2>
-    {{ contact.templateContent | safe }}
-  </div>
+    {% if showcase.templateContent %}
+      <div class="about">
+        {{ showcase.templateContent | safe }}
+      </div>
+    {% endif %}
 
-  <a class="button primary" href="mailto:{{ contact.data.email }}">{{ contact.data.email }}</a>
-</section>
+    {% if showcase.data.ctaLabel and showcase.data.ctaUrl %}
+      <div class="hero-actions">
+        <a class="button primary" href="{{ showcase.data.ctaUrl }}">
+          {{ showcase.data.ctaLabel }}
+        </a>
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% if howIThink %}
+  <section id="thinking" class="section">
+    <div class="section-heading">
+      {% if howIThink.data.eyebrow %}
+        <p class="eyebrow">{{ howIThink.data.eyebrow }}</p>
+      {% endif %}
+
+      {% if howIThink.data.headline %}
+        <h2>{{ howIThink.data.headline }}</h2>
+      {% endif %}
+    </div>
+
+    {% if howIThink.templateContent %}
+      <div class="about">
+        {{ howIThink.templateContent | safe }}
+      </div>
+    {% endif %}
+
+    {% if howIThink.data.principles %}
+      <div class="grid cards">
+        {% for principle in howIThink.data.principles %}
+          <article class="card">
+            <h3>{{ principle.title }}</h3>
+            <p>{{ principle.summary }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% if whoFor %}
+  <section id="who-for" class="section alt">
+    <div class="section-heading">
+      {% if whoFor.data.eyebrow %}
+        <p class="eyebrow">{{ whoFor.data.eyebrow }}</p>
+      {% endif %}
+
+      {% if whoFor.data.headline %}
+        <h2>{{ whoFor.data.headline }}</h2>
+      {% endif %}
+    </div>
+
+    {% if whoFor.templateContent %}
+      <div class="about">
+        {{ whoFor.templateContent | safe }}
+      </div>
+    {% endif %}
+
+    {% if whoFor.data.audiences %}
+      <div class="grid cards">
+        {% for audience in whoFor.data.audiences %}
+          <article class="card">
+            <h3>{{ audience.title }}</h3>
+            <p>{{ audience.summary }}</p>
+
+            {% if audience.bestFor %}
+              <ul>
+                {% for item in audience.bestFor %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+{% if about %}
+  <section id="about" class="section about">
+    <div class="section-heading">
+      {% if about.data.eyebrow %}
+        <p class="eyebrow">{{ about.data.eyebrow }}</p>
+      {% endif %}
+
+      {% if about.data.headline %}
+        <h2>{{ about.data.headline }}</h2>
+      {% endif %}
+    </div>
+
+    {{ about.templateContent | safe }}
+  </section>
+{% endif %}
+
+{% if contact %}
+  <section id="contact" class="section contact">
+    <div>
+      {% if contact.data.eyebrow %}
+        <p class="eyebrow">{{ contact.data.eyebrow }}</p>
+      {% endif %}
+
+      {% if contact.data.headline %}
+        <h2>{{ contact.data.headline }}</h2>
+      {% endif %}
+
+      {{ contact.templateContent | safe }}
+    </div>
+
+    {% if contact.data.email %}
+      <a class="button primary" href="mailto:{{ contact.data.email }}">
+        {{ contact.data.email }}
+      </a>
+    {% endif %}
+  </section>
+{% endif %}
