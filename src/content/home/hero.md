@@ -4,7 +4,7 @@ order: 1
 eyebrow: Workflow Automation • Data Integrity • Systems Governance
 headline: I help teams build digital systems that mirror how their business actually works
 mobileHeadline: I build systems that mirror how your business works
-subheadline: Through workflow design, automation, and data governance, I reduce manual touchpoints and help teams create cleaner, more reliable operational data
+subheadline: I reduce manual touchpoints and help teams create cleaner, more reliable operational data thought workflow designs, automations and data governance.
 primaryCtaLabel: Explore Systems I’ve Built
 primaryCtaUrl: "#projects"
 secondaryCtaLabel: Start a Conversation
