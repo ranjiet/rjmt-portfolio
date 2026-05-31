@@ -21,6 +21,16 @@ _site/
 
 Do not edit _site directly.
 
+===============================================
+To preview locally - 
+
+cd /opt/rjmt-web/tb
+npm run build
+npx @11ty/eleventy --serve -- --host 0.0.0.0
+
+===============================================
+
+
 Local build
 npm run build
 Local preview

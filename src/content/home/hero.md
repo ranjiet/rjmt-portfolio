@@ -2,17 +2,18 @@
 section: hero
 order: 1
 eyebrow: CRM Automation • RevOps • Systems Governance
-headline: I build practical CRM systems for teams that need automation they can actually trust.
-subheadline: I help sales, operations, RevOps, and implementation teams turn manual processes, messy data, and fragile workflows into governed systems with clearer ownership, better visibility, and fewer silent failures.
+headline: I help teams build digital systems that mirror how their business actually works
+mobileHeadline: I build systems that mirror how your business works
+subheadline: Through workflow design, automation, and data governance, I reduce manual touchpoints and help teams create cleaner, more reliable operational data
 primaryCtaLabel: Explore Systems I’ve Built
 primaryCtaUrl: "#projects"
 secondaryCtaLabel: Start a Conversation
 secondaryCtaUrl: "#contact"
 focusAreas:
-  - Process-first CRM automation
-  - Data quality and governance
-  - Edge-case-aware workflow design
-  - Zoho CRM and Salesforce systems
-  - RevOps visibility and reporting
+  - Systems that Mirror Business Processes
+  - Workflows, Automation & Governance
+  - Data Quality & Operational Integrity
+  - CRM, internal tools, and reporting visibility
+  - Sales, Operations, & Implementation Workflows
 permalink: false
 ---

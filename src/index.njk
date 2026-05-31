@@ -8,7 +8,7 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
 {% set problem = collections.home | findByFileSlug("problem-pain-point") %}
 {% set whatIDo = collections.home | findByFileSlug("what-i-do") %}
 {% set showcase = collections.home | findByFileSlug("showcase") %}
-{% set howIThink = collections.home | findByFileSlug("how-i-think") %}
+
 {% set whoFor = collections.home | findByFileSlug("who-this-is-for") %}
 {% set about = collections.all | findByFileSlug("about") %}
 {% set contact = collections.all | findByFileSlug("contact") %}
@@ -25,7 +25,15 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
       {% endif %}
 
       {% if hero.data.headline %}
-        <h1>{{ hero.data.headline }}</h1>
+        <h1 class="hero-title hero-title-desktop">
+          {{ hero.data.headline }}
+        </h1>
+      {% endif %}
+
+      {% if hero.data.mobileHeadline %}
+        <h1 class="hero-title hero-title-mobile">
+          {{ hero.data.mobileHeadline }}
+        </h1>
       {% endif %}
 
       <div class="hero-lower">
@@ -167,8 +175,9 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
     {% if showcase.data.systemGroups %}
       <div class="project-list">
         {% for group in showcase.data.systemGroups %}
+
           <article class="project">
-            <div>
+            <div class="project-header">
               {% if group.groupTitle %}
                 <p class="project-kicker">{{ group.groupTitle }}</p>
               {% endif %}
@@ -178,18 +187,53 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
               {% endif %}
             </div>
 
-            <div>
-              {% if group.systems %}
-                <div class="grid cards">
+            {% if group.systems %}
+              {% if group.groupTitle == "Explore Other Projects" %}
+                <div class="system-grid system-grid-expandable" data-expandable-projects>
                   {% for system in group.systems %}
-                    <article class="card">
+                    {% if loop.first %}
+                      <article class="system-item system-item-preview">
+                        <h3>{{ system.title }}</h3>
+                        <p>{{ system.summary }}</p>
+                      </article>
+                    {% endif %}
+                  {% endfor %}
+
+                  <button
+                    class="systems-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    data-expandable-trigger
+                  >
+                    View more supporting projects
+                  </button>
+
+                  <div class="systems-hidden" data-expandable-panel>
+                    {% for system in group.systems %}
+                      {% if not loop.first %}
+                        <article class="system-item">
+                          <h3>{{ system.title }}</h3>
+                          <p>{{ system.summary }}</p>
+                        </article>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% else %}
+                <div class="system-grid">
+                  {% for system in group.systems %}
+                    <article class="system-item">
                       <h3>{{ system.title }}</h3>
                       <p>{{ system.summary }}</p>
                     </article>
                   {% endfor %}
                 </div>
               {% endif %}
-            </div>
+            {% endif %}
+
+
+
+
           </article>
         {% endfor %}
       </div>
@@ -211,7 +255,7 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
     {% endif %}
 
     {% if showcase.templateContent %}
-      <div class="about">
+      <div class="showcase-note">
         {{ showcase.templateContent | safe }}
       </div>
     {% endif %}
@@ -221,37 +265,6 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
         <a class="button primary" href="{{ showcase.data.ctaUrl }}">
           {{ showcase.data.ctaLabel }}
         </a>
-      </div>
-    {% endif %}
-  </section>
-{% endif %}
-
-{% if howIThink %}
-  <section id="thinking" class="section">
-    <div class="section-heading">
-      {% if howIThink.data.eyebrow %}
-        <p class="eyebrow">{{ howIThink.data.eyebrow }}</p>
-      {% endif %}
-
-      {% if howIThink.data.headline %}
-        <h2>{{ howIThink.data.headline }}</h2>
-      {% endif %}
-    </div>
-
-    {% if howIThink.templateContent %}
-      <div class="about">
-        {{ howIThink.templateContent | safe }}
-      </div>
-    {% endif %}
-
-    {% if howIThink.data.principles %}
-      <div class="grid cards">
-        {% for principle in howIThink.data.principles %}
-          <article class="card">
-            <h3>{{ principle.title }}</h3>
-            <p>{{ principle.summary }}</p>
-          </article>
-        {% endfor %}
       </div>
     {% endif %}
   </section>

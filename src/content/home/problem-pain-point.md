@@ -1,14 +1,15 @@
 ---
 eyebrow: The Problem
-headline: Automation is easy to start. Trustworthy automation is harder to build.
+headline: Automation is easy Trustworthy Automation is not
 painPoints:
-  - Messy data creates fragile workflows
-  - Edge cases break processes silently
-  - CRM ownership rules drift over time
-  - Teams lack visibility into what changed, what failed, and what depends on what
+  - Business rules live outside the system
+  - Manual touchpoints create data drift
+  - Reports require too much explanation
+  - Edge cases become silent failures
 permalink: false
 ---
-Many teams know exactly which processes are painful. The manual follow-ups, duplicate data entry, spreadsheet workarounds, unclear ownership rules, and reporting gaps are easy to spot.
-The harder part is turning those processes into automation that can survive real-world messiness.
-Bad data, unusual scenarios, changing business rules, and hidden dependencies can turn a helpful automation into a quiet source of risk. When teams do not have visibility into what the system is doing, what it depends on, or where it can fail, trust erodes quickly.
-That is where better system design begins: not with the tool, but with the process underneath it.
+The real world process usually lives outside the system.
+
+Teams rarely struggle because they lack tools. They struggle because the business logic is scattered across spreadsheets, side conversations, manual follow-ups, undocumented rules, and people’s memory.
+
+When the system only captures part of the process, teams start compensating around it. Ownership drifts. Data falls out of sync. Reports need explanation. Edge cases become surprises. Over time, the tool stops being a source of clarity and becomes another place where work has to be checked, corrected, and interpreted.
