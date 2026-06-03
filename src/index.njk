@@ -192,10 +192,18 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
                 <div class="system-grid system-grid-expandable" data-expandable-projects>
                   {% for system in group.systems %}
                     {% if loop.first %}
-                      <article class="system-item system-item-preview">
-                        <h3>{{ system.title }}</h3>
-                        <p>{{ system.summary }}</p>
-                      </article>
+                      {% if system.url %}
+                        <a class="system-item system-item-preview system-item-link" href="{{ system.url }}">
+                          <h3>{{ system.title }}</h3>
+                          <p>{{ system.summary }}</p>
+                          <span class="system-item-cta">View project →</span>
+                        </a>
+                      {% else %}
+                        <article class="system-item system-item-preview">
+                          <h3>{{ system.title }}</h3>
+                          <p>{{ system.summary }}</p>
+                        </article>
+                      {% endif %}
                     {% endif %}
                   {% endfor %}
 
@@ -211,10 +219,18 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
                   <div class="systems-hidden" data-expandable-panel>
                     {% for system in group.systems %}
                       {% if not loop.first %}
-                        <article class="system-item">
-                          <h3>{{ system.title }}</h3>
-                          <p>{{ system.summary }}</p>
-                        </article>
+                        {% if system.url %}
+                          <a class="system-item system-item-link" href="{{ system.url }}">
+                            <h3>{{ system.title }}</h3>
+                            <p>{{ system.summary }}</p>
+                            <span class="system-item-cta">View project →</span>
+                          </a>
+                        {% else %}
+                          <article class="system-item">
+                            <h3>{{ system.title }}</h3>
+                            <p>{{ system.summary }}</p>
+                          </article>
+                        {% endif %}
                       {% endif %}
                     {% endfor %}
                   </div>
@@ -222,17 +238,22 @@ description: RJM Tech Services helps teams turn messy CRM data, manual processes
               {% else %}
                 <div class="system-grid">
                   {% for system in group.systems %}
-                    <article class="system-item">
-                      <h3>{{ system.title }}</h3>
-                      <p>{{ system.summary }}</p>
-                    </article>
+                    {% if system.url %}
+                      <a class="system-item system-item-link" href="{{ system.url }}">
+                        <h3>{{ system.title }}</h3>
+                        <p>{{ system.summary }}</p>
+                        <span class="system-item-cta">View project →</span>
+                      </a>
+                    {% else %}
+                      <article class="system-item">
+                        <h3>{{ system.title }}</h3>
+                        <p>{{ system.summary }}</p>
+                      </article>
+                    {% endif %}
                   {% endfor %}
                 </div>
               {% endif %}
             {% endif %}
-
-
-
 
           </article>
         {% endfor %}

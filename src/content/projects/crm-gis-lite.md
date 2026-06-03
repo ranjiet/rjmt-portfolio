@@ -3,6 +3,6 @@ order:
 kicker: 
 title: 
 summary: 
-permalink: /projects/crm-proximity-search/
+permalink: /projects/crm-gis-lite/
 featured: true
 ---

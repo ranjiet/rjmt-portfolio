@@ -903,3 +903,24 @@ h3 {
   background: var(--accent);
   transform: translateY(-0.12rem);
 }
+
+/* CSS for the clickable cards */
+
+#projects .system-item-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#projects .system-item-link:hover,
+#projects .system-item-link:focus {
+  text-decoration: none;
+}
+
+#projects .system-item-cta {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}

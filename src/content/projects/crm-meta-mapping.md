@@ -1,4 +1,11 @@
-# Zoho CRM Meta Mapping Automation Case Study
+---
+order:
+kicker: 
+title: 
+summary: 
+permalink: /projects/meta-mapping/
+featured: true
+---
 
 ### Problem
 

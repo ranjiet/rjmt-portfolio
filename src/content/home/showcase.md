@@ -6,26 +6,32 @@ systemGroups:
   - groupTitle: Business Process-Aligned Systems
     groupSummary: Translate business process into automated workflows
     systems:
-      - title: Quoting Automation
-        summary: A workflow for reducing manual quote assembly by connecting CRM data, product details, pricing logic, and sales document generation into a cleaner quoting process.
+      - title: CRM Revenue Operations Automation
+        summary: A Zoho CRM-native revenue workflow that connects quotes, deals, discount handling, ARR classification, and recurring revenue schedule tracking into one governed sales-to-revenue process.
+        url: /projects/revops-automation/
       - title: CRM Mapping Tool
         summary: A Python-powered mapping layer that visualizes CRM accounts, deals, territories, and geographic relationships using CRM data as the operational foundation.
+        url: /projects/crm-gis-lite/
 
   - groupTitle: System Governance & Operational Visibility
     groupSummary: Mitigate hidden dependencies and operational risk
     systems:
       - title: Zoho Meta-Mapping
         summary: A local dependency and governance toolkit that maps Zoho CRM fields, workflows, functions, and modules to help identify downstream impact before system changes are made.
+        url: /projects/meta-mapping/
       - title: Deal Velocity Tracker
         summary: A stage-history framework that tracks how long deals spend in each sales stage, revealing bottlenecks, stalled movement, and pipeline patterns.
+        url: /projects/deal-velocity/
 
   - groupTitle: Knowledge Base & OSS Tools
     groupSummary: Automated thought capture and self-hosted OSS tools
     systems:
       - title: BrainBridge Thought Capture
         summary: A self-hosted voice and thought capture workflow that transcribes, cleans, organizes, stores, and semantically searches captured ideas.
+        url: /projects/linux-brainbridge/
       - title: Self-Hosted Productivity Stack
         summary: A Linux-based local productivity environment for file access, documentation experiments, automation tools, local AI workflows, and self-hosted applications.
+        url: /projects/linux-oss-productivity-stack/
 
   - groupTitle: Explore Other Projects
     groupSummary: Additional projects that show how I think

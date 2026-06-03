@@ -1,8 +1,10 @@
 ---
-order: 1
-kicker: CRM Operations
-title: CRM for Sales Enablement
-permalink: false
+order:
+kicker: 
+title: 
+summary: 
+permalink: /projects//
+featured: true
 ---
 A CRM-centered sales enablement approach focused on helping sales teams operate with greater structure, visibility, and consistency.
 

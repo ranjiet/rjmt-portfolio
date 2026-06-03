@@ -1,4 +1,11 @@
-# Zoho CRM Deal Velocity Automation Case Study
+---
+order:
+kicker: 
+title: 
+summary: 
+permalink: /projects/deal-velocity/
+featured: true
+---
 
 ### Problem
 
