@@ -1,15 +1,13 @@
 ---
 eyebrow: The Problem
-headline: Automation is easy Trustworthy Automation is not
+headline: The problem is usually not the tool, but rather how well it follows your business logic.
 painPoints:
   - Business rules live outside the system
-  - Manual touchpoints create data drift
+  - Workarounds introduce manual touchpoints
   - Reports require too much explanation
-  - Edge cases become silent failures
+  - Edge cases are handled inconsistently
 permalink: false
 ---
-The real world process usually lives outside the system.
+Business processes extend beyond the tools meant to support them. When a system captures data but not the underlying process, teams create workarounds to keep the business moving, increasing the risk of data drift.
 
-Teams rarely struggle because they lack tools. They struggle because the business logic is scattered across spreadsheets, side conversations, manual follow-ups, undocumented rules, and people’s memory.
-
-When the system only captures part of the process, teams start compensating around it. Ownership drifts. Data falls out of sync. Reports need explanation. Edge cases become surprises. Over time, the tool stops being a source of clarity and becomes another place where work has to be checked, corrected, and interpreted.
+Over time, the tool becomes less useful as a source of clarity and more dependent on manual review, correction, and interpretation to stay aligned with the business.
