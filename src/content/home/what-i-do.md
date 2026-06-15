@@ -1,15 +1,15 @@
 ---
-eyebrow: What I Do
-headline: I turn real-world process into systems people can actually use
+eyebrow: How TechBridge Can Help
+headline: Designing systems guided by business logic
 capabilities:
   - title: Process-First System Design
-    summary: I start by understanding how the work actually happens, then translate the business rules, handoffs, and exceptions into usable system structure.
+    summary: Business rules, handoffs, and exceptions become the foundation for system design, so workflows are built around how work actually happens instead of forcing teams to work around the tool.
   - title: Automation with Guardrails
-    summary: I build workflows, approvals, scheduled scripts, and internal tools that reduce manual work without creating hidden fragility.
-  - title: Data Integrity & Visibility
-    summary: I design ownership logic, audit trails, dependency maps, and reporting foundations so teams can trust what changed, what depends on what, and what might break.
+    summary: Workflows, approvals, scheduled scripts, and internal tools are designed to reduce manual effort while keeping the underlying logic visible, traceable, and easier to maintain.
+  - title: Dependency Mapping & Change Visibility
+    summary: System relationships are mapped before changes are made, helping teams identify what may be affected by a field, workflow, or automation update before it creates downstream issues.
   - title: Adoption-Minded Execution
-    summary: I design around the people using the system, making workflows easier to follow, easier to trust, and easier to maintain after launch.
+    summary: Workflows are designed around the people who use them, making the system easier to follow, easier to trust, and easier to maintain after launch.
 permalink: false
 ---
-I work where business process and technical execution overlap: mapping how work really happens, turning that into system logic, and building the automation, governance, and visibility needed to keep it reliable when real-world messiness shows up.
+TechBridge Consulting supports the technical execution of business processes by mapping how work really happens. That understanding becomes the north star for system structure, workflows, governance, and operational visibility.

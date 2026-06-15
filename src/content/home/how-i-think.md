@@ -1,18 +1,19 @@
 ---
-eyebrow: How I Think
-headline: I design systems around the mess they have to survive.
+eyebrow: Guiding Principles
+headline: Reliable systems designed around the complexity they have to support.
 principles:
   - title: Process before platform
-    summary: I start by understanding how the work actually happens before deciding how the CRM, automation, or workflow should support it.
+    summary: Process mapping comes first. Before designing system structure, the business process, logic, quirks, and day-to-day realities have to be understood clearly enough to support them well.
   - title: Dependencies matter
-    summary: I look for the fields, workflows, reports, handoffs, approvals, and downstream systems that people may not realize are connected.
+    summary: Fields, workflows, reports, handoffs, approvals, and downstream systems are often more connected than they appear. Those relationships need to be visible before meaningful changes are made.
   - title: Edge cases are design inputs
-    summary: I treat exceptions, bad data, incomplete records, and unusual scenarios as part of the system design, not as afterthoughts.
+    summary: Exceptions, incomplete records, unusual scenarios, and imperfect data are part of real operations. Strong systems account for them instead of treating them as afterthoughts.
   - title: Governance should be built in
-    summary: I prefer systems with audit trails, impact visibility, ownership logic, and clear guardrails so teams can understand what changed and what might break.
+    summary: Audit trails, impact visibility, ownership logic, and clear guardrails help teams understand what changed, what depends on what, and where issues may appear.
   - title: Users decide whether systems succeed
-    summary: I design with adoption in mind, making the system easier to use, easier to trust, and easier to maintain after launch.
+    summary: Systems work best when they are easy to use, easy to trust, and practical to maintain after launch.
 permalink: false
 ---
-My approach comes from years spent close to messy business operations: customer service teams, reporting workflows, CRM migrations, sales enablement tools, federal modernization work, product ownership, and Zoho automation.
-That experience taught me that automation is not just about making something faster. It is about understanding the business pattern underneath the task, respecting the data that feeds it, and designing enough visibility for people to trust the system when real-world complications appear.
+TechBridge Consulting’s approach comes from working close to real business operations: customer service teams, reporting workflows, CRM migrations, sales enablement tools, federal modernization work, product ownership, and CRM automation.
+
+That experience shaped a practical belief: automation is not just about making work faster. It is about understanding the business pattern underneath the task, respecting the data that feeds it, and building enough visibility for people to trust the system as the business evolves.
