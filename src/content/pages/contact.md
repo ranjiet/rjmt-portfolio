@@ -1,8 +1,6 @@
 ---
 eyebrow: Contact
-headline: Need help turning operational chaos into something usable?
+headline: Reach out to start a conversation about turning your business logic into system behavior.
 email: rj@rjmtechservices.com
 permalink: false
 ---
-
-Reach out and let’s map the mess.
