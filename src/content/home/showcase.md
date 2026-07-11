@@ -1,47 +1,64 @@
 ---
-eyebrow: Systems Built
-headline: Selected systems built from real operational messes
-sectionIntro: These projects span quoting workflows, CRM mapping, dependency visibility, pipeline measurement, knowledge capture, and self-hosted tools. Each started with a practical problem and became a system designed to reduce manual work, improve trust, and make business operations easier to manage.
-systemGroups:
-  - groupTitle: Business Process-Aligned Systems
-    groupSummary: Translate business process into automated workflows
-    systems:
-      - title: CRM Revenue Operations Automation
-        summary: A Zoho CRM-native revenue workflow that connects quotes, deals, discount handling, ARR classification, and recurring revenue schedule tracking into one governed sales-to-revenue process.
-        url: /projects/revops-automation/
-      - title: CRM Mapping Tool
-        summary: A Python-powered mapping layer that visualizes CRM accounts, deals, territories, and geographic relationships using CRM data as the operational foundation.
-        url: /projects/crm-gis-lite/
+eyebrow: Selected Work
+headline: Systems designed around how the business works
+sectionIntro: >-
+  A selection of CRM, RevOps, automation, and local AI systems designed
+  to improve visibility, strengthen execution, and make complex processes
+  easier to manage.
 
-  - groupTitle: System Governance & Operational Visibility
-    groupSummary: Mitigate hidden dependencies and operational risk
+systemGroups:
+  - groupTitle: Featured CRM & RevOps Systems
+    groupSummary: Systems that connect business operations with practical technical execution.
     systems:
-      - title: Zoho Meta-Mapping
-        summary: A local dependency and governance toolkit that maps Zoho CRM fields, workflows, functions, and modules to help identify downstream impact before system changes are made.
+      - title: Revenue Operations Workflow Design
+        summary: >-
+          A CRM-centered operating model for connecting sales activity,
+          approval steps, revenue visibility, and handoff logic into a more
+          consistent sales-to-operations process.
+        url: /projects/revops-automation/
+
+      - title: CRM Governance Visibility
+        summary: >-
+          A local governance approach for mapping fields, automations,
+          dependencies, and documentation coverage so teams can understand
+          system relationships before making changes.
         url: /projects/meta-mapping/
-      - title: Deal Velocity Tracker
-        summary: A stage-history framework that tracks how long deals spend in each sales stage, revealing bottlenecks, stalled movement, and pipeline patterns.
+
+      - title: Pipeline Movement Analysis
+        summary: >-
+          A reporting framework for understanding how opportunities move
+          through defined stages, giving leadership clearer visibility into
+          timing, momentum, and process patterns.
         url: /projects/deal-velocity/
 
-  - groupTitle: Knowledge Base & OSS Tools
-    groupSummary: Automated thought capture and self-hosted OSS tools
+  - groupTitle: More Systems & Experiments
+    groupSummary: Additional examples spanning CRM architecture, knowledge capture, and self-hosted tools.
     systems:
-      - title: BrainBridge Thought Capture
-        summary: A self-hosted voice and thought capture workflow that transcribes, cleans, organizes, stores, and semantically searches captured ideas.
-        url: /projects/linux-brainbridge/
+      - title: CRM Territory & Ownership Mapping
+        summary: >-
+          A CRM data layer for connecting records, regions, ownership rules,
+          and location context into a more usable operational view.
+        url: /projects/crm-gis-lite/
+
+      - title: Cross-Module Data Integrity Framework
+        summary: >-
+          A synchronization approach that keeps related CRM records aligned
+          through persistent identifiers, validation logic, and traceable
+          system updates.
+        url: /projects/data-integrity-framework/
+
+      - title: BrainBridge - Thought Capture & Retrieval (BB-TCR)
+        summary: >-
+          A self-hosted voice and thought capture workflow that transcribes,
+          organizes, stores, and semantically searches captured ideas.
+        url: /projects/linux-bbtcr/
+
       - title: Self-Hosted Productivity Stack
-        summary: A Linux-based local productivity environment for file access, documentation experiments, automation tools, local AI workflows, and self-hosted applications.
+        summary: >-
+          A Linux-based environment supporting CRM Documentation, Automation Tools,
+          Local AI Workflows, and Self-hosted Applications.
         url: /projects/linux-oss-productivity-stack/
 
-  - groupTitle: Explore Other Projects
-    groupSummary: Additional projects that show how I think
-    systems:
-      - title: Data Integrity Framework + LCAD ID System
-        summary: A cross-module synchronization framework that keeps Leads, Contacts, Accounts, and Deals aligned through persistent IDs, integrity triggers, and audit-friendly logic.
-      - title: Radial Link + Territory Assignment
-        summary: A geographic CRM data layer that connects ZIP codes, counties, coordinates, and ownership rules to support county-level territory assignment.
-      - title: Proximity Search
-        summary: A radius-based CRM search tool that uses geographic coordinates to help users find nearby Leads, Accounts, and Deals.
 permalink: false
 ---
 

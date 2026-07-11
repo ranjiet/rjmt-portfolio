@@ -1,10 +1,14 @@
 ---
 eyebrow: About Me
-headline: Bridging business strategy and system execution
+headline: I build systems around how people actually work
 permalink: false
 ---
-Hi! I'm RJ Menon.
+Hi, I’m RJ Menon.
 
-My background spans Business Analysis, CRM Product Management, CRM Automation, Reporting, Documentation, and Self-Hosted Technical Systems. I am at my best when sales and RevOps teams are working through complex processes, inconsistent data, unclear handoffs, or workflow gaps that can be solved with practical technology.
+My career began in customer-facing operations, where I learned to listen closely, trace problems to their source, and understand how process decisions affect the people doing the work. That perspective followed me into Business Analysis, CRM Product Management, automation, and systems architecture.
 
-I specialize in turning scattered, undocumented processes into usable systems that improve visibility, support better decision-making, and help teams operate with more structure and confidence.
+Today, I work across Zoho, Salesforce, RevOps, reporting, documentation, and self-hosted technical systems.
+
+My best work begins with a simple question: What problem are you trying to solve?
+
+From there, I bring people, process, data, and technology into the same conversation, then turn that shared understanding into systems that are clear, useful, and built to grow with the organization.
