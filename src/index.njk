@@ -156,137 +156,141 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
 {% endif %}
 
 {% if showcase %}
-  <section id="projects" class="section alt">
-    <div class="section-heading">
+  <section class="showcase-section" id="selected-work">
+    <div class="showcase-section__header">
       {% if showcase.data.eyebrow %}
-        <p class="eyebrow">{{ showcase.data.eyebrow }}</p>
+        <p class="eyebrow">
+          {{ showcase.data.eyebrow }}
+        </p>
       {% endif %}
 
       {% if showcase.data.headline %}
-        <h2>{{ showcase.data.headline }}</h2>
+        <h2 class="showcase-section__headline">
+          {{ showcase.data.headline }}
+        </h2>
       {% endif %}
 
       {% if showcase.data.sectionIntro %}
-        <p class="hero-copy">{{ showcase.data.sectionIntro }}</p>
+        <p class="showcase-section__intro">
+          {{ showcase.data.sectionIntro }}
+        </p>
       {% endif %}
     </div>
 
-    {% if showcase.data.systemGroups %}
-      <div class="project-list">
-        {% for group in showcase.data.systemGroups %}
+    <div class="showcase-stack">
 
-          <article class="project">
-            <div class="project-header">
-              {% if group.groupTitle %}
-                <p class="project-kicker">{{ group.groupTitle }}</p>
-              {% endif %}
-
-              {% if group.groupSummary %}
-                <h3>{{ group.groupSummary }}</h3>
-              {% endif %}
-            </div>
-
-            {% if group.systems %}
-              {% if group.groupTitle == "Explore Other Projects" %}
-                <div class="system-grid system-grid-expandable" data-expandable-projects>
-                  {% for system in group.systems %}
-                    {% if loop.first %}
-                      {% if system.url %}
-                        <a class="system-item system-item-preview system-item-link" href="{{ system.url }}">
-                          <h3>{{ system.title }}</h3>
-                          <p>{{ system.summary }}</p>
-                          <span class="system-item-cta">View project →</span>
-                        </a>
-                      {% else %}
-                        <article class="system-item system-item-preview">
-                          <h3>{{ system.title }}</h3>
-                          <p>{{ system.summary }}</p>
-                        </article>
-                      {% endif %}
-                    {% endif %}
-                  {% endfor %}
-
-                  <button
-                    class="systems-toggle"
-                    type="button"
-                    aria-expanded="false"
-                    data-expandable-trigger
-                  >
-                    View more supporting projects
-                  </button>
-
-                  <div class="systems-hidden" data-expandable-panel>
-                    {% for system in group.systems %}
-                      {% if not loop.first %}
-                        {% if system.url %}
-                          <a class="system-item system-item-link" href="{{ system.url }}">
-                            <h3>{{ system.title }}</h3>
-                            <p>{{ system.summary }}</p>
-                            <span class="system-item-cta">View project →</span>
-                          </a>
-                        {% else %}
-                          <article class="system-item">
-                            <h3>{{ system.title }}</h3>
-                            <p>{{ system.summary }}</p>
-                          </article>
-                        {% endif %}
-                      {% endif %}
-                    {% endfor %}
-                  </div>
-                </div>
-              {% else %}
-                <div class="system-grid">
-                  {% for system in group.systems %}
-                    {% if system.url %}
-                      <a class="system-item system-item-link" href="{{ system.url }}">
-                        <h3>{{ system.title }}</h3>
-                        <p>{{ system.summary }}</p>
-                        <span class="system-item-cta">View project →</span>
-                      </a>
-                    {% else %}
-                      <article class="system-item">
-                        <h3>{{ system.title }}</h3>
-                        <p>{{ system.summary }}</p>
-                      </article>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              {% endif %}
+      {# Featured CRM and RevOps systems #}
+      {% if showcase.data.featuredSystems %}
+        <article class="showcase-card showcase-card--featured">
+          <header class="showcase-card__header">
+            {% if showcase.data.featuredSystems.title %}
+              <p class="showcase-card__eyebrow">
+                {{ showcase.data.featuredSystems.title }}
+              </p>
             {% endif %}
 
-          </article>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="project-list">
-        {% for project in collections.projects %}
-          <article class="project">
-            <div>
-              <p class="project-kicker">{{ project.data.kicker }}</p>
-              <h3>{{ project.data.title }}</h3>
+            {% if showcase.data.featuredSystems.summary %}
+              <p class="showcase-card__summary">
+                {{ showcase.data.featuredSystems.summary }}
+              </p>
+            {% endif %}
+          </header>
+
+          {% if showcase.data.featuredSystems.systems %}
+            <div class="showcase-projects">
+              {% for system in showcase.data.featuredSystems.systems %}
+                <article class="showcase-project">
+                  {% if system.title %}
+                    <h3 class="showcase-project__title">
+                      {{ system.title }}
+                    </h3>
+                  {% endif %}
+
+                  {% if system.summary %}
+                    <p class="showcase-project__summary">
+                      {{ system.summary }}
+                    </p>
+                  {% endif %}
+
+                  {% if system.url %}
+                    <a
+                      class="showcase-project__link"
+                      href="{{ system.url }}"
+                      aria-label="View project: {{ system.title }}"
+                    >
+                      View project
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  {% endif %}
+                </article>
+              {% endfor %}
             </div>
+          {% endif %}
+        </article>
+      {% endif %}
 
-            <div>
-              {{ project.templateContent | safe }}
+      {# Other systems, collapsed by default #}
+      {% if showcase.data.otherSystems %}
+        <details class="showcase-card showcase-card--expandable">
+          <summary class="showcase-card__toggle">
+            <span class="showcase-card__toggle-copy">
+              {% if showcase.data.otherSystems.title %}
+                <span class="showcase-card__eyebrow">
+                  {{ showcase.data.otherSystems.title }}
+                </span>
+              {% endif %}
+
+              {% if showcase.data.otherSystems.summary %}
+                <span class="showcase-card__summary">
+                  {{ showcase.data.otherSystems.summary }}
+                </span>
+              {% endif %}
+            </span>
+
+            <span
+              class="showcase-card__toggle-icon"
+              aria-hidden="true"
+            >
+              +
+            </span>
+          </summary>
+
+          {% if showcase.data.otherSystems.systems %}
+            <div class="showcase-card__expanded-content">
+              <div class="showcase-projects">
+                {% for system in showcase.data.otherSystems.systems %}
+                  <article class="showcase-project">
+                    {% if system.title %}
+                      <h3 class="showcase-project__title">
+                        {{ system.title }}
+                      </h3>
+                    {% endif %}
+
+                    {% if system.summary %}
+                      <p class="showcase-project__summary">
+                        {{ system.summary }}
+                      </p>
+                    {% endif %}
+
+                    {% if system.url %}
+                      <a
+                        class="showcase-project__link"
+                        href="{{ system.url }}"
+                        aria-label="View project: {{ system.title }}"
+                      >
+                        View project
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    {% endif %}
+                  </article>
+                {% endfor %}
+              </div>
             </div>
-          </article>
-        {% endfor %}
-      </div>
-    {% endif %}
+          {% endif %}
+        </details>
+      {% endif %}
 
-    {% if showcase.templateContent %}
-      <div class="showcase-note">
-        {{ showcase.templateContent | safe }}
-      </div>
-    {% endif %}
-
-    {% if showcase.data.ctaLabel and showcase.data.ctaUrl %}
-      <div class="hero-actions">
-        <a class="button primary" href="{{ showcase.data.ctaUrl }}">
-          {{ showcase.data.ctaLabel }}
-        </a>
-      </div>
-    {% endif %}
+    </div>
   </section>
 {% endif %}
 

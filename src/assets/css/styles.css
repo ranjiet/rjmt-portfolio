@@ -2,18 +2,22 @@
   --bg: #0f172a;
   --panel: #172033;
   --panel-soft: rgba(23, 32, 51, 0.74);
+  --panel-hover: rgba(30, 41, 59, 0.86);
   --text: #f8fafc;
   --muted: #cbd5e1;
   --muted-soft: #94a3b8;
   --accent: #38bdf8;
   --accent-strong: #0ea5e9;
   --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.2);
   --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
   --radius: 24px;
   --max: 1120px;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,13 +27,35 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34rem),
-    radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.12), transparent 30rem),
+    radial-gradient(
+      circle at top left,
+      rgba(56, 189, 248, 0.18),
+      transparent 34rem
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(14, 165, 233, 0.12),
+      transparent 30rem
+    ),
     var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
 a {
@@ -43,6 +69,17 @@ p {
 
 p:last-child {
   margin-bottom: 0;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.28);
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 /* =========================================================
@@ -90,6 +127,10 @@ p:last-child {
   font-size: 0.95rem;
 }
 
+.nav a {
+  transition: color 160ms ease;
+}
+
 .nav a:hover {
   color: var(--text);
 }
@@ -106,13 +147,15 @@ p:last-child {
 
 .hero,
 .section,
+.showcase-section,
 .site-footer {
   width: min(var(--max), calc(100% - 2rem));
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
-.section {
-  padding: clamp(3.25rem, 7vw, 5rem) 0;
+.section,
+.showcase-section {
+  padding-block: clamp(3.25rem, 7vw, 5rem);
 }
 
 .section.alt {
@@ -174,8 +217,9 @@ h3 {
 .hero {
   min-height: auto;
   display: grid;
-  grid-template-columns: minmax(0, 760px) minmax(300px, 360px);
-  column-gap: clamp(1.75rem, 3vw, 2.5rem);
+  width: min(1240px, calc(100% - 2rem));
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 460px);
+  column-gap: clamp(2rem, 4vw, 3.5rem);
   row-gap: 1.5rem;
   justify-content: start;
   align-items: center;
@@ -189,8 +233,8 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 760px;
   width: 100%;
+  max-width: 760px;
   margin-bottom: 0.9rem;
   font-size: clamp(1.85rem, 2.45vw, 2.25rem);
   line-height: 1.06;
@@ -204,10 +248,10 @@ h3 {
 
 .hero-copy {
   max-width: 760px;
+  margin-bottom: 0;
   color: var(--muted);
   font-size: clamp(1rem, 1.25vw, 1.08rem);
   line-height: 1.55;
-  margin-bottom: 0;
 }
 
 .hero-actions {
@@ -219,14 +263,14 @@ h3 {
 
 .hero-card {
   width: 100%;
-  max-width: 360px;
+  max-width: 460px;
   justify-self: start;
   align-self: center;
   padding: 1.35rem;
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   background: var(--panel-soft);
   backdrop-filter: blur(12px);
-  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
@@ -236,6 +280,10 @@ h3 {
   color: var(--muted);
 }
 
+.hero-card li {
+  white-space: nowrap;
+}
+
 .hero-card li + li {
   margin-top: 0.35rem;
 }
@@ -243,7 +291,6 @@ h3 {
 .hero-title-mobile {
   display: none;
 }
-
 
 /* =========================================================
    Buttons
@@ -257,6 +304,10 @@ h3 {
   padding: 0.75rem 1.05rem;
   border-radius: 999px;
   font-weight: 800;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
 }
 
 .button.primary {
@@ -274,11 +325,12 @@ h3 {
 }
 
 .button.secondary:hover {
+  border-color: var(--line-strong);
   background: rgba(255, 255, 255, 0.06);
 }
 
 /* =========================================================
-   Cards
+   Generic cards
    ========================================================= */
 
 .grid.cards {
@@ -291,9 +343,9 @@ h3 {
 .card,
 .project {
   border: 1px solid var(--line);
+  border-radius: var(--radius);
   background: var(--panel-soft);
   backdrop-filter: blur(12px);
-  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
@@ -320,6 +372,326 @@ h3 {
 }
 
 /* =========================================================
+   Home two-up section: Problem + What I Do
+   ========================================================= */
+
+.home-two-up-section {
+  padding-block: clamp(3rem, 5vw, 4.25rem);
+}
+
+.home-two-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.home-two-up-panel {
+  min-width: 0;
+}
+
+.home-two-up-panel .section-heading {
+  max-width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.home-two-up-panel h2 {
+  max-width: 100%;
+  margin-bottom: 0;
+  font-size: clamp(1.55rem, 2.4vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.home-two-up-panel .section-copy {
+  max-width: 100%;
+  margin-bottom: 1.35rem;
+}
+
+.home-two-up-panel .section-copy p {
+  max-width: 100%;
+  font-size: 0.98rem;
+  line-height: 1.58;
+}
+
+.home-two-up .grid.cards.compact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.home-two-up .grid.cards.compact-cards .card {
+  min-height: auto;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.home-two-up .grid.cards.compact-cards .card h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.home-two-up .grid.cards.compact-cards .card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   Problem section
+   ========================================================= */
+
+#problem .grid.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+  max-width: 620px;
+  margin-top: 2rem;
+}
+
+#problem .grid.cards .card {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+#problem .grid.cards .card p {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#problem .grid.cards .card p::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: translateY(-0.12rem);
+}
+
+/* =========================================================
+   Selected work / Showcase
+   Matches the refactored index.njk block
+   ========================================================= */
+
+.showcase-section {
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+}
+
+.showcase-section__header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.showcase-section__headline {
+  max-width: none;
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.85rem, 2.6vw, 2.45rem);
+  line-height: 1.08;
+}
+
+.showcase-section__intro {
+  max-width: 88ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.showcase-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.showcase-card {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-soft);
+  backdrop-filter: blur(12px);
+  box-shadow: none;
+}
+
+.showcase-card--featured {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.showcase-card__header {
+  margin-bottom: 1.5rem;
+}
+
+.showcase-card__eyebrow {
+  display: block;
+  margin: 0 0 0.6rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.showcase-card__summary {
+  display: block;
+  max-width: 78ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+.showcase-projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+
+.showcase-project {
+  min-width: 0;
+  padding: 1.45rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.showcase-project:first-child {
+  padding-top: 1.35rem;
+}
+
+.showcase-project:last-child {
+  padding-bottom: 0;
+}
+
+.showcase-project__title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.08rem, 1.5vw, 1.24rem);
+  line-height: 1.25;
+}
+
+.showcase-project__summary {
+  max-width: 88ch;
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.showcase-project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 750;
+  line-height: 1.3;
+  text-decoration: none;
+  text-underline-offset: 0.25rem;
+}
+
+.showcase-project__link span {
+  color: var(--accent);
+  transition: transform 160ms ease;
+}
+
+.showcase-project__link:hover {
+  text-decoration: underline;
+}
+
+.showcase-project__link:hover span {
+  transform: translateX(0.2rem);
+}
+
+/* Collapsed supporting systems card */
+
+.showcase-card--expandable {
+  overflow: hidden;
+  padding: 0;
+}
+
+.showcase-card__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  padding: 1.35rem clamp(1.5rem, 3vw, 2.25rem);
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 160ms ease;
+}
+
+.showcase-card__toggle:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.showcase-card__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.showcase-card__toggle::marker {
+  content: "";
+}
+
+.showcase-card__toggle-copy {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.showcase-card__toggle .showcase-card__eyebrow {
+  margin: 0;
+}
+
+.showcase-card__toggle .showcase-card__summary {
+  max-width: 82ch;
+}
+
+.showcase-card__toggle-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--accent);
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.showcase-card--expandable[open] .showcase-card__toggle-icon {
+  transform: rotate(45deg);
+}
+
+.showcase-card__expanded-content {
+  padding: 0 clamp(1.5rem, 3vw, 2.25rem)
+    clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--line);
+}
+
+.showcase-card__expanded-content .showcase-project:first-child {
+  padding-top: 1.5rem;
+  border-top: 0;
+}
+
+.showcase-card__expanded-content .showcase-project:last-child {
+  padding-bottom: 0;
+}
+
+/* =========================================================
    Paragraph-heavy sections
    ========================================================= */
 
@@ -333,241 +705,6 @@ h3 {
 }
 
 /* =========================================================
-   Problem section
-   ========================================================= */
-
-#problem .grid.cards .card {
-  min-height: 120px;
-}
-
-/* =========================================================
-   Showcase / Systems Built
-   ========================================================= */
-
-#projects {
-  padding-block: clamp(3rem, 5vw, 4.25rem);
-}
-
-#projects .section-heading {
-  max-width: 100%;
-  margin-bottom: 2rem;
-}
-
-#projects .section-heading h2 {
-  max-width: none;
-  font-size: clamp(1.85rem, 2.4vw, 2.25rem);
-  line-height: 1.1;
-  text-wrap: balance;
-}
-
-#projects .section-heading .hero-copy {
-  max-width: 100%;
-  font-size: 1rem;
-  line-height: 1.55;
-}
-
-#projects .project-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: stretch;
-  margin-bottom: 1.5rem;
-}
-
-#projects .project {
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-  /* gap: 1.15rem; */
-  min-width: 0;
-  min-height: 330px;
-  height: 100%;
-  padding: clamp(1.2rem, 2vw, 1.45rem);
-  border: 1px solid var(--line);
-  background: var(--panel-soft);
-  backdrop-filter: blur(12px);
-  border-radius: var(--radius);
-  box-shadow: none;
-}
-
-/* #projects .project-header {
-  display: block;
-  min-height: 112px;
-  margin: 0;
-  text-align: center;
-} */
-
-#projects .project-header {
-  display: block;
-  min-height: 0;
-  margin: 0 0 1.5rem;
-  text-align: left;
-}
-
-#projects .project-kicker {
-  display: block;
-  width: 100%;
-  margin: 0 0 0.65rem;
-  color: var(--accent);
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.68rem;
-  line-height: 1.25;
-  font-weight: 800;
-}
-
-#projects .project-summary,
-#projects .project-header h3 {
-  width: 100%;
-  max-width: 34rem;
-  margin: 0 auto;
-  color: var(--text);
-  font-size: clamp(0.98rem, 1vw, 1.08rem);
-  line-height: 1.28;
-  letter-spacing: -0.01em;
-  font-weight: 400;
-  text-align: left;
-}
-
-#projects .system-grid {
-  display: grid;
-  gap: 0.85rem;
-  margin-top: 0;
-}
-
-#projects .system-item {
-  padding: 0 0 0.85rem;
-  border-bottom: 1px solid var(--line);
-}
-
-#projects .system-item:last-child {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-#projects .system-item h3 {
-  margin: 0 0 0.2rem;
-  font-size: 0.98rem;
-  line-height: 1.2;
-}
-
-#projects .system-item p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.42;
-}
-
-#projects .showcase-note {
-  max-width: 850px;
-  margin: 1.75rem 0 0;
-  color: var(--muted);
-}
-
-#projects > .hero-actions {
-  margin-top: 1.5rem;
-}
-
-/* Expandable supporting projects */
-#projects .project-expandable,
-#projects .project:has([data-expandable-projects]) {
-  min-height: 330px;
-}
-
-#projects .system-grid-expandable {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  margin-top: 0;
-}
-
-#projects .system-grid-expandable .systems-toggle {
-  margin-top: auto;
-}
-
-#projects .systems-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  width: 100%;
-  padding: 0.7rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-#projects .systems-toggle:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
-#projects .systems-toggle::after {
-  content: "+";
-  margin-left: 0.45rem;
-  color: var(--accent);
-  font-weight: 900;
-}
-
-#projects .systems-toggle[aria-expanded="true"]::after {
-  content: "−";
-}
-
-#projects .systems-hidden {
-  display: none;
-}
-
-#projects .systems-hidden.is-open {
-  display: grid;
-  gap: 0.85rem;
-}
-
-@media (max-width: 1100px) {
-  #projects .section-heading .hero-copy {
-    max-width: 100%;
-  }
-
-  #projects .project-list {
-    grid-template-columns: 1fr;
-  }
-
-  #projects .project {
-    min-height: auto;
-  }
-
-  #projects .project-header {
-    min-height: auto;
-  }
-
-  #projects .system-grid-expandable {
-    margin-top: 1.15rem;
-  }
-}
-
-@media (max-width: 680px) {
-  #projects .section-heading {
-    text-align: center;
-  }
-
-  #projects .section-heading h2 {
-    margin-inline: auto;
-    font-size: clamp(1.45rem, 6vw, 1.8rem);
-  }
-
-  #projects .section-heading .hero-copy {
-    text-align: left;
-  }
-
-  #projects .project {
-    padding: 1.1rem;
-  }
-}
-
-/* =========================================================
    How I Think
    ========================================================= */
 
@@ -576,7 +713,7 @@ h3 {
 }
 
 /* =========================================================
-   Who This Is For
+   Who TechBridge Can Help
    ========================================================= */
 
 #who-for .grid.cards {
@@ -657,6 +794,21 @@ h3 {
   #who-for .grid.cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .home-two-up {
+    grid-template-columns: 1fr;
+    max-width: 920px;
+    margin-inline: auto;
+    gap: 3rem;
+  }
+
+  .home-two-up .grid.cards.compact-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-two-up .grid.cards.compact-cards .card {
+    padding: 0.9rem 1rem;
+  }
 }
 
 /* =========================================================
@@ -732,6 +884,52 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .home-two-up {
+    max-width: 100%;
+  }
+
+  .home-two-up .grid.cards.compact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .home-two-up-panel h2 {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .showcase-section__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .showcase-section__headline {
+    font-size: clamp(1.55rem, 7vw, 1.95rem);
+  }
+
+  .showcase-card--featured {
+    padding: 1.35rem;
+  }
+
+  .showcase-card__toggle {
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .showcase-card__toggle-icon {
+    margin-top: 0.05rem;
+  }
+
+  .showcase-card__expanded-content {
+    padding: 0 1.35rem 1.35rem;
+  }
+
+  .showcase-project {
+    padding-block: 1.25rem;
+  }
+
+  .showcase-project__summary {
+    font-size: 0.93rem;
+  }
+
   .contact {
     display: grid;
   }
@@ -761,166 +959,90 @@ h3 {
 }
 
 /* =========================================================
-   Home two-up section: Problem + What I Do
-   Hero untouched
+   Reduced motion
    ========================================================= */
 
-.home-two-up-section {
-  padding-block: clamp(3rem, 5vw, 4.25rem);
-}
-
-.home-two-up {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(2.5rem, 5vw, 4rem);
-  align-items: start;
-}
-
-.home-two-up-panel {
-  min-width: 0;
-}
-
-.home-two-up-panel .section-heading {
-  max-width: 100%;
-  margin-bottom: 1.2rem;
-}
-
-.home-two-up-panel h2 {
-  max-width: 100%;
-  font-size: clamp(1.55rem, 2.4vw, 2.1rem);
-  line-height: 1.1;
-  margin-bottom: 0;
-}
-
-.home-two-up-panel .section-copy {
-  max-width: 100%;
-  margin-bottom: 1.35rem;
-}
-
-.home-two-up-panel .section-copy p {
-  max-width: 100%;
-  font-size: 0.98rem;
-  line-height: 1.58;
-}
-
-/* Stronger than the global .grid.cards rule */
-.home-two-up .grid.cards.compact-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-}
-
-.home-two-up .grid.cards.compact-cards .card {
-  min-height: auto;
-  padding: 0.95rem 1rem;
-  border-radius: 18px;
-  box-shadow: none;
-}
-
-.home-two-up .grid.cards.compact-cards .card h3 {
-  font-size: 1rem;
-  line-height: 1.2;
-  margin-bottom: 0.45rem;
-}
-
-.home-two-up .grid.cards.compact-cards .card p {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-/* Laptop / portrait-ish screens:
-   stack the two sections, but KEEP the cards in 2 columns */
-@media (max-width: 1100px) {
-  .home-two-up {
-    grid-template-columns: 1fr;
-    max-width: 920px;
-    margin: 0 auto;
-    gap: 3rem;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .home-two-up .grid.cards.compact-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .home-two-up .grid.cards.compact-cards .card {
-    padding: 0.9rem 1rem;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
-/* Smaller mobile only: stack cards */
-@media (max-width: 680px) {
-  .home-two-up {
-    max-width: 100%;
-  }
+/* =========================================================
+   Typography normalization
+   ========================================================= */
 
-  .home-two-up .grid.cards.compact-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .home-two-up-panel h2 {
-    font-size: clamp(1.45rem, 6vw, 1.85rem);
-  }
+:root {
+  --body-font-size: 1rem;
+  --body-line-height: 1.6;
+  --label-font-size: 0.78rem;
 }
 
+/* Standard content text */
 
-/* Problem Card Update*/
-#problem .grid.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.7rem;
-  margin-top: 2rem;
-  max-width: 620px;
+.hero-copy,
+.hero-card li,
+.card p,
+.card li,
+.about p,
+.contact p,
+.home-two-up-panel .section-copy p,
+.home-two-up .grid.cards.compact-cards .card p,
+#problem .grid.cards .card p,
+.showcase-section__intro,
+.showcase-card__summary,
+.showcase-project__summary {
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
 }
 
-#problem .grid.cards .card {
-  min-height: auto;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  backdrop-filter: none;
-  border-radius: 0;
-  box-shadow: none;
-}
+/* Labels, eyebrows, and small section identifiers */
 
-#problem .grid.cards .card p {
-  display: flex;
-  align-items: baseline;
-  gap: 0.65rem;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1rem;
+.eyebrow,
+.card-label,
+.project-kicker,
+.showcase-card__eyebrow {
+  font-size: var(--label-font-size);
   line-height: 1.4;
-  font-weight: 500;
 }
 
-#problem .grid.cards .card p::before {
-  content: "";
-  flex: 0 0 auto;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 999px;
-  background: var(--accent);
-  transform: translateY(-0.12rem);
+/* Project and card links */
+
+.showcase-project__link,
+.system-item-cta {
+  font-size: var(--body-font-size);
 }
 
-/* CSS for the clickable cards */
+/* =========================================================
+   Complementary home-page column proportions
+   ========================================================= */
 
-#projects .system-item-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
+/* Hero: 60% content / 40% focus areas */
+.hero {
+  grid-template-columns:
+    minmax(0, 3fr)
+    minmax(0, 2fr);
 }
 
-#projects .system-item-link:hover,
-#projects .system-item-link:focus {
-  text-decoration: none;
+/* Let the focus-area card use its full column */
+.hero-card {
+  width: 100%;
+  max-width: none;
+  justify-self: stretch;
 }
 
-#projects .system-item-cta {
-  display: inline-block;
-  margin-top: 0.85rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+/* Problem + How TechBridge Can Help: 40% / 60% */
+.home-two-up {
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(0, 3fr);
 }
