@@ -1,6 +1,6 @@
 ---
 eyebrow: Where TechBridge Fits
-headline: Different teams. One shared goal: systems that support the work.
+headline: "Different teams. One shared goal: systems that support the work."
 
 audiences:
   - title: Growing Sales & RevOps Teams
