@@ -10,56 +10,29 @@ featuredSystems:
   title: Featured CRM & RevOps Systems
   summary: Practical systems that connect business operations with technical execution.
   systems:
-    - title: Revenue Operations Workflow Design
+    - title: CRM Revenue Operations Workflow
       summary: >-
-        A CRM-centered operating model connecting sales activity, approval
-        steps, revenue visibility, and handoff logic into a consistent
-        sales-to-operations process.
-      url: /projects/revops-automation/
+        A governed CRM framework connecting commercial records, pricing logic,
+        recurring revenue classification, and reporting checkpoints to improve
+        sales-to-revenue visibility.
+      url: /projects/crm-revops-automation/
 
     - title: CRM Governance Visibility
       summary: >-
-        A local governance approach that maps fields, automations,
-        dependencies, and documentation coverage, giving teams a clear view
-        of system relationships before changes are introduced.
-      url: /projects/meta-mapping/
+        A metadata-driven governance framework that maps CRM components,
+        dependencies, and change impact so teams can understand how the
+        platform is connected before making changes.
+      url: /projects/crm-meta-mapping/
 
-    - title: Pipeline Movement Analysis
+    - title: CRM Pipeline Health & Stage Intelligence
       summary: >-
-        A reporting framework that tracks how opportunities move through
-        defined stages, giving leadership clearer visibility into timing,
-        momentum, and process patterns.
-      url: /projects/deal-velocity/
+        A reporting framework that captures stage movement, measures time in
+        stage, and turns pipeline history into structured operational insight.
+      url: /projects/crm-pipeline-health/
 
-otherSystems:
-  title: Explore Other Systems
-  summary: Additional work across CRM architecture, knowledge capture, and self-hosted tools.
-  systems:
-    - title: CRM Territory & Ownership Mapping
-      summary: >-
-        A CRM data layer connecting records, regions, ownership rules,
-        and location context into a more useful operational view.
-      url: /projects/crm-gis-lite/
-
-    - title: Cross-Module Data Integrity Framework
-      summary: >-
-        A synchronization framework that keeps related CRM records aligned
-        through persistent identifiers, validation logic, and traceable
-        system updates.
-      url: /projects/data-integrity-framework/
-
-    - title: BrainBridge - Thought Capture & Retrieval
-      summary: >-
-        A self-hosted voice and thought capture workflow that transcribes,
-        organizes, stores, and semantically searches captured ideas.
-      url: /projects/linux-brainbridge/
-
-    - title: Self-Hosted Productivity Stack
-      summary: >-
-        A Linux-based environment supporting CRM documentation, automation
-        tools, local AI workflows, secure file access, and self-hosted
-        applications.
-      url: /projects/linux-oss-productivity-stack/
+projectsLink:
+  label: Explore all projects
+  url: /projects/
 
 permalink: false
 ---

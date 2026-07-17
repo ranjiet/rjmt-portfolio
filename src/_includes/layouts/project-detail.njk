@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+---
+
+<main class="project-detail">
+
+  <header class="project-detail__header">
+    {% if kicker %}
+      <p class="eyebrow">
+        {{ kicker }}
+      </p>
+    {% endif %}
+
+    {% if title %}
+      <h1 class="project-detail__title">
+        {{ title }}
+      </h1>
+    {% endif %}
+
+    {% if summary %}
+      <p class="project-detail__summary">
+        {{ summary }}
+      </p>
+    {% endif %}
+  </header>
+
+  <article class="project-detail__content">
+    {{ content | safe }}
+  </article>
+
+<footer class="project-detail__footer">
+  <div class="project-detail__footer-actions">
+    <a
+      class="button primary project-detail__footer-button"
+      href="/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open the TechBridge home page in a new tab"
+    >
+      <svg
+        class="project-detail__footer-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.9"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5 9.5V21h14V9.5" />
+        <path d="M9.5 21v-7h5v7" />
+      </svg>
+
+      <span>TB</span>
+    </a>
+
+    <a
+      class="button primary project-detail__footer-button"
+      href="/projects/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Explore all projects in a new tab"
+    >
+      <span>Explore all projects</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</footer>
+
+</main>

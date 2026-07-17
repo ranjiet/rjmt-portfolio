@@ -1,59 +1,108 @@
 ---
+layout: layouts/project-detail.njk
 order: 5
 kicker: Infrastructure
-title: "Automating Thought Capture: BB-TC"
-summary: A self-hosted AI-assisted thought capture system that catches scattered ideas before they disappear, then transcribes, cleans, stores, indexes, and makes them searchable for later use.
+title: BrainBridge Thought Capture & Retrieval (BB-TCR)
+summary: A self-hosted, AI-assisted knowledge system that captures spoken and written ideas, transcribes and organizes them, then uses retrieval-augmented generation to surface relevant context through natural-language questions.
 permalink: /projects/linux-brainbridge/
 featured: true
+bodyClass: project-detail-page
 ---
 
 ### Problem
 
-The problem was not *simply capturing my thoughts*. The problem was *capturing them before they evaporated* and turning them into something I can *act on*, *search*, and *reuse*.
+Useful ideas often appear at inconvenient moments and disappear before they can be captured in a structured form. Traditional note-taking tools can introduce enough friction that a thought is lost before it is recorded, organized, or connected to related work.
 
-Some thoughts are fully formed and easy to write down. Most are not. They show up mid-walk, mid-troubleshooting, mid-dog-dad-duty, or while I’m talking through a problem out loud. By the time a traditional note-taking tool is opened, titled, and gently negotiated with, the original thought vanishes into thin air - much akin Warden Norton's question to Fuzzy Britches in Andy Dufresne’s empty cell.
+Capturing the information is only the first challenge. At first, the limited volume of captured material made retrieval relatively straightforward. As the knowledge base expanded, however, the need for a practical way to locate relevant thoughts, connect related ideas, and retrieve context without relying on exact keywords, dates, or file locations became increasingly important.
 
-I built BrainBridge Thought Capture (BB-TC) for myself as a 100% local way to move thoughts from brain to Ms. Delta Flyer, my server, with as little friction as possible. The goal was simple: capture my thought, process it, make it queryable, and create an always-on extended brain I could search anytime.
+The challenge was to create a reliable path from unfinished thought to durable knowledge, then make that knowledge available through natural-language retrieval.
 
-### Why it matters
+### Personal Value
 
-BB-TC matters because the most useful ideas are not always born at convenient times.
+A personal knowledge system is only useful when capturing information is easier than losing it and retrieving information is easier than manually searching through it.
 
-A personal knowledge system only works if capturing information is easier than losing it. If the process requires more than one or two clicks, it fails even before it can become useful.
+Voice notes, typed observations, reminders, tasks, troubleshooting notes, and personal reflections can easily become scattered across recordings, documents, and chat threads. Even when that material is preserved, it can remain functionally invisible if it cannot be located later.
 
-The goal was to create a reliable path from raw thought to usable memory. Voice notes, typed notes, reminders, tasks, troubleshooting observations, and personal reflections all flow into the same ecosystem. Once captured, they are searchable, reusable, and available for future reflection instead of being scattered across recordings, text files, chat threads, and half-remembered brain sparks.
+BB-TCR creates a consistent intake and retrieval process that turns fragmented thoughts into an organized personal knowledge base. Captured information can be searched, summarized, connected to earlier ideas, and brought into new conversations through retrieval-augmented generation.
 
-### How I approached it
+### Approach
 
-I treated BB-TC as a personal operating system for thought capture. The goal was to make capture fast, processing automatic, and retrieval conversational. The system needed to meet me where the thought happened, whether I was at my computer, using my phone, or trying to capture an idea before it vanished into the ceiling tiles.
+BB-TCR was designed as a modular thought-capture and knowledge-retrieval pipeline focused on fast input, automatic processing, and conversational access, with an impetus on being cloud independent.
 
-I designed the pipeline as a sequence of focused modules:
+The workflow follows seven stages:
 
-**Capture → Transcribe → Clean → Store → Index → Query**
+**Capture → Transcribe → Clean → Store → Index → Retrieve → Generate**
 
-Each module had a specific responsibility. That made the system easier to troubleshoot because I could isolate issues to a single stage of the pipeline instead of trying to untangle the whole thing at once. It also made the system easier to improve incrementally, since each stage could be updated without breaking the full workflow as long as the inputs and outputs stayed consistent.
+Each stage has a defined responsibility:
 
-Since BB-TC was a hobby and personal project, the success criteria were intentionally human: Did I capture the thought before it disappeared? Could I find it later? Could the system help me recognize patterns in my own thinking? Could it reduce the mental tax of trying to remember everything myself?
+- **Capture** accepts spoken or written input.
+- **Transcribe** converts recorded audio into text.
+- **Clean** prepares transcripts for storage and retrieval.
+- **Store** preserves complete thoughts, metadata, summaries, and tags.
+- **Index** creates searchable chunks and vector embeddings.
+- **Retrieve** identifies the most relevant stored context for a question.
+- **Generate** uses a local language model to produce an answer grounded in the retrieved material.
 
-### What I built
+This modular structure allows transcription, cleanup, storage, indexing, retrieval, and generation components to be maintained or improved independently. It also makes failures easier to isolate and reduces the likelihood that changes to one stage will disrupt the complete workflow.
 
-I built BB-TC as a 100% local thought capture and retrieval pipeline that turns spoken and written ideas into an organized, searchable knowledge base. At a high level, it includes:
+The project was evaluated using practical criteria: how quickly a thought could be captured, whether it could be found later, whether related ideas could be connected, and whether the system could answer questions using the user’s own accumulated knowledge.
 
-- **Low-friction audio capture:** I built a phone-based capture flow that lets me tap once to start recording a thought, tap again to stop, and automatically trigger the downstream processing pipeline.
-    
-- **Speech-to-text and transcript cleanup:** I used Whisper to convert audio into text, then built cleanup processes that normalize transcripts, improve readability, and prepare the output for storage, ingestion, and downstream use.
-    
-- **Structured storage and semantic search indexing:** I built a storage and indexing layer that stores captured thoughts in SQLite with generated metadata, then indexes transcript chunks in Chroma using Ollama-generated embeddings, enabling both semantic search and time-filtered retrieval.
-    
-- **Local AI summarization and tagging:** I integrated a locally hosted Ollama model that generates summaries and tags for ingested transcripts, helping transform raw thought capture into more organized and usable knowledge.
-    
-- **Natural-language retrieval foundation:** I built a query layer called “Query for Your Thoughts?” that supports date-based lookup, tag-based lookup, and semantic search, creating the foundation for questions like “what thoughts did I capture today?” or “what did I say about that project idea last week?”
-    
+### Solution
+
+BrainBridge is a fully local thought-capture, retrieval, and conversational knowledge system that converts spoken and written ideas into structured, searchable context.
+
+At a high level, it includes:
+
+- **Low-friction capture:** A phone-based workflow supports rapid voice capture and automatically begins downstream processing when a recording is completed.
+
+- **Speech-to-text processing:** Whisper converts audio into text, followed by cleanup routines that normalize transcripts and prepare them for storage, indexing, and retrieval.
+
+- **Structured knowledge storage:** Complete captures, metadata, summaries, tags, timestamps, and source references are stored in SQLite for organized access and long-term maintenance.
+
+- **Semantic indexing:** Transcript segments are divided into searchable chunks and indexed using locally generated vector embeddings, enabling concept-based retrieval in addition to exact keyword matching.
+
+- **Retrieval-augmented generation:** When a question is submitted, the system retrieves relevant transcript segments and supplies them as context to a locally hosted language model. The resulting response is grounded in previously captured material rather than relying only on the model’s general knowledge.
+
+- **Hybrid retrieval routing:** Queries can be handled using semantic retrieval, structured filters, time-based searches, tag matching, or combined retrieval strategies depending on the question being asked.
+
+- **Time-aware retrieval:** Questions can be constrained to specific dates or time periods, supporting prompts such as “What did I capture today?” or “What was I thinking about this project last week?”
+
+- **Tag and metadata retrieval:** Generated tags and structured metadata provide an additional retrieval path for locating related captures across different topics and periods.
+
+- **Local AI enrichment:** A locally hosted language model creates summaries, tags, and other metadata that make raw captures easier to browse, retrieve, and reuse.
+
+- **Conversational query layer:** A natural-language interface allows users to ask questions across accumulated thoughts without needing to know where the original recording or transcript was stored.
+
+- **Source-aware responses:** Retrieved context can be associated with its original capture, timestamp, and source record, making it easier to review the material behind a generated response.
+
+- **Modular processing pipeline:** Independent capture, transcription, cleanup, ingestion, indexing, retrieval, and generation components support incremental improvement and easier troubleshooting.
+
+- **Private-by-design operation:** Audio, transcripts, metadata, embeddings, retrieval context, and model processing remain within the self-hosted environment.
+
+### Technologies
+
+- Linux
+- Python
+- Shell scripting
+- Whisper
+- SQLite
+- Chroma
+- Ollama
+- Local language models
+- Vector embeddings
+- Retrieval-augmented generation
+- Semantic search
+- Hybrid retrieval
+- File-system automation
+- REST services
+- Mobile capture workflows
 
 ### What it demonstrates
 
-BB-TC demonstrates my ability to design practical automation around the way I actually think, not the way a generic productivity tool assumes I should think.
+BrainBridge demonstrates the ability to design automation around real human behavior rather than requiring users to adapt to a rigid productivity system.
 
-It shows how I can combine Linux server administration, shell scripting, Python, Whisper, SQLite, embeddings, Chroma, Ollama, and file-system workflows into a cohesive personal knowledge system. It also demonstrates my preference for building systems incrementally: starting with a rough but working capture flow, then layering in reliability, cleanup, metadata, semantic search, and eventually better interfaces.
+It combines local infrastructure, speech processing, structured storage, vector indexing, semantic retrieval, and language-model generation into a cohesive personal knowledge platform. The retrieval-augmented generation layer allows the system to move beyond storing notes and begin answering questions using relevant context from the user’s own captured thoughts.
 
-Most importantly, it shows systems thinking at a very personal scale. BB-TC connects audio capture, transcription, cleanup, storage, semantic indexing, and retrieval into one pipeline designed to reduce cognitive friction. It is not just a note-taking project. It is an attempt to build a bridge between fleeting thoughts and durable memory.
+The project also reflects an incremental engineering approach: beginning with a functional capture workflow, then expanding through transcription cleanup, metadata generation, semantic indexing, hybrid retrieval, source-aware context assembly, and conversational response generation.
+
+Most importantly, BrainBridge connects fleeting input with durable, retrievable knowledge while preserving privacy and minimizing both capture and recall friction.

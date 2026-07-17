@@ -3,24 +3,37 @@ layout: layouts/base.njk
 title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
 ---
 
+{# ==========================================================
+   HOME CONTENT
+   ========================================================== #}
+
 {% set hero = collections.home | findByFileSlug("hero") %}
 {% set problem = collections.home | findByFileSlug("problem-pain-point") %}
-{% set whatIDo = collections.home | findByFileSlug("what-i-do") %}
+{% set guidingPrinciples = collections.home | findByFileSlug("tb-guiding-principles") %}
+{% set howWeHelp = collections.home | findByFileSlug("tb-how-we-help") %}
 {% set showcase = collections.home | findByFileSlug("showcase") %}
+{% set whoFor = collections.home | findByFileSlug("tb-who-for") %}
 
-{% set whoFor = collections.home | findByFileSlug("who-this-is-for") %}
+{# ==========================================================
+   PAGE CONTENT
+   ========================================================== #}
+
 {% set about = collections.all | findByFileSlug("about") %}
 {% set contact = collections.all | findByFileSlug("contact") %}
+{% set projectPage = collections.all | findByFileSlug("project") %}
 
-{% if not whoFor %}
-  {% set whoFor = collections.home | findByFileSlug("who-for") %}
-{% endif %}
+
+{# ==========================================================
+   HERO
+   ========================================================== #}
 
 {% if hero %}
   <section class="hero">
     <div class="hero-content">
       {% if hero.data.eyebrow %}
-        <p class="eyebrow">{{ hero.data.eyebrow }}</p>
+        <p class="eyebrow">
+          {{ hero.data.eyebrow }}
+        </p>
       {% endif %}
 
       {% if hero.data.headline %}
@@ -37,7 +50,9 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
 
       <div class="hero-lower">
         {% if hero.data.subheadline %}
-          <p class="hero-copy">{{ hero.data.subheadline }}</p>
+          <p class="hero-copy">
+            {{ hero.data.subheadline }}
+          </p>
         {% endif %}
 
         {% if hero.templateContent %}
@@ -48,19 +63,29 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
 
         <div class="hero-actions">
           {% if hero.data.primaryCtaLabel and hero.data.primaryCtaUrl %}
-            <a class="button primary" href="{{ hero.data.primaryCtaUrl }}">
+            <a
+              class="button primary"
+              href="{{ hero.data.primaryCtaUrl }}"
+            >
               {{ hero.data.primaryCtaLabel }}
             </a>
           {% else %}
-            <a class="button primary" href="#projects">View Systems Built</a>
+            <a class="button primary" href="#projects">
+              View Systems Built
+            </a>
           {% endif %}
 
           {% if hero.data.secondaryCtaLabel and hero.data.secondaryCtaUrl %}
-            <a class="button secondary" href="{{ hero.data.secondaryCtaUrl }}">
+            <a
+              class="button secondary"
+              href="{{ hero.data.secondaryCtaUrl }}"
+            >
               {{ hero.data.secondaryCtaLabel }}
             </a>
           {% else %}
-            <a class="button secondary" href="#contact">Start a Conversation</a>
+            <a class="button secondary" href="#contact">
+              Start a Conversation
+            </a>
           {% endif %}
         </div>
       </div>
@@ -68,7 +93,10 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
 
     {% if hero.data.focusAreas %}
       <aside class="hero-card">
-        <p class="card-label">Focus Areas</p>
+        <p class="card-label">
+          Focus Areas
+        </p>
+
         <ul>
           {% for item in hero.data.focusAreas %}
             <li>{{ item }}</li>
@@ -79,18 +107,31 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
   </section>
 {% endif %}
 
-{% if problem or whatIDo %}
+
+{# ==========================================================
+   PROBLEM + HOW TECHBRIDGE HELPS
+   ========================================================== #}
+
+{% if problem or howWeHelp %}
   <section class="section alt home-two-up-section">
     <div class="home-two-up">
+
       {% if problem %}
-        <article id="problem" class="home-two-up-panel">
+        <article
+          id="problem"
+          class="home-two-up-panel"
+        >
           <div class="section-heading">
             {% if problem.data.eyebrow %}
-              <p class="eyebrow">{{ problem.data.eyebrow }}</p>
+              <p class="eyebrow">
+                {{ problem.data.eyebrow }}
+              </p>
             {% endif %}
 
             {% if problem.data.headline %}
-              <h2>{{ problem.data.headline }}</h2>
+              <h2>
+                {{ problem.data.headline }}
+              </h2>
             {% endif %}
           </div>
 
@@ -112,51 +153,172 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
         </article>
       {% endif %}
 
-      {% if whatIDo %}
-        <article id="services" class="home-two-up-panel">
+
+      {% if howWeHelp %}
+        <article
+          id="how-we-help"
+          class="home-two-up-panel"
+        >
+          {#
+            Backward-compatible anchor for any older links
+            that still point to #services.
+          #}
+          <span
+            id="services"
+            class="section-anchor"
+            aria-hidden="true"
+          ></span>
+
           <div class="section-heading">
-            {% if whatIDo.data.eyebrow %}
-              <p class="eyebrow">{{ whatIDo.data.eyebrow }}</p>
+            {% if howWeHelp.data.eyebrow %}
+              <p class="eyebrow">
+                {{ howWeHelp.data.eyebrow }}
+              </p>
             {% endif %}
 
-            {% if whatIDo.data.headline %}
-              <h2>{{ whatIDo.data.headline }}</h2>
+            {% if howWeHelp.data.headline %}
+              <h2>
+                {{ howWeHelp.data.headline }}
+              </h2>
             {% endif %}
           </div>
 
-          {% if whatIDo.templateContent %}
+          {% if howWeHelp.templateContent %}
             <div class="about section-copy">
-              {{ whatIDo.templateContent | safe }}
+              {{ howWeHelp.templateContent | safe }}
             </div>
           {% endif %}
 
-          {% if whatIDo.data.capabilities %}
+          {% if howWeHelp.data.capabilities %}
             <div class="grid cards compact-cards">
-              {% for capability in whatIDo.data.capabilities %}
+              {% for capability in howWeHelp.data.capabilities %}
                 <article class="card">
-                  <h3>{{ capability.title }}</h3>
-                  <p>{{ capability.summary }}</p>
+                  {% if capability.title %}
+                    <h3>
+                      {{ capability.title }}
+                    </h3>
+                  {% endif %}
+
+                  {% if capability.summary %}
+                    <p>
+                      {{ capability.summary }}
+                    </p>
+                  {% endif %}
                 </article>
               {% endfor %}
             </div>
-          {% else %}
+
+          {% elif collections.services %}
             <div class="grid cards compact-cards">
               {% for service in collections.services %}
                 <article class="card">
-                  <h3>{{ service.data.title }}</h3>
-                  {{ service.templateContent | safe }}
+                  {% if service.data.title %}
+                    <h3>
+                      {{ service.data.title }}
+                    </h3>
+                  {% endif %}
+
+                  {% if service.templateContent %}
+                    {{ service.templateContent | safe }}
+                  {% endif %}
                 </article>
               {% endfor %}
             </div>
           {% endif %}
         </article>
       {% endif %}
+
     </div>
   </section>
 {% endif %}
 
+
+{# ==========================================================
+   GUIDING PRINCIPLES
+   Formerly how-i-think.md
+   ========================================================== #}
+
+{% if guidingPrinciples %}
+  <section
+    id="guiding-principles"
+    class="section guiding-principles-section"
+  >
+    <div class="section-heading">
+      {% if guidingPrinciples.data.eyebrow %}
+        <p class="eyebrow">
+          {{ guidingPrinciples.data.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if guidingPrinciples.data.headline %}
+        <h2>
+          {{ guidingPrinciples.data.headline }}
+        </h2>
+      {% endif %}
+
+      {% if guidingPrinciples.data.sectionIntro %}
+        <p class="section-intro">
+          {{ guidingPrinciples.data.sectionIntro }}
+        </p>
+      {% endif %}
+    </div>
+
+    {% if guidingPrinciples.templateContent %}
+      <div class="about section-copy">
+        {{ guidingPrinciples.templateContent | safe }}
+      </div>
+    {% endif %}
+
+    {% if guidingPrinciples.data.principles %}
+      <div class="grid cards principles-grid">
+        {% for principle in guidingPrinciples.data.principles %}
+          <article class="card">
+            {% if principle.title %}
+              <h3>
+                {{ principle.title }}
+              </h3>
+            {% endif %}
+
+            {% if principle.summary %}
+              <p>
+                {{ principle.summary }}
+              </p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+{% endif %}
+
+
+{# ==========================================================
+   SELECTED WORK
+   Driven by content/home/showcase.md
+   ========================================================== #}
+
 {% if showcase %}
-  <section class="showcase-section" id="projects">
+  {% set projectsUrl = "/projects/" %}
+  {% set projectsLabel = "Explore all projects" %}
+
+  {% if projectPage and projectPage.url %}
+    {% set projectsUrl = projectPage.url %}
+  {% endif %}
+
+  {% if showcase.data.projectsLink %}
+    {% if showcase.data.projectsLink.url %}
+      {% set projectsUrl = showcase.data.projectsLink.url %}
+    {% endif %}
+
+    {% if showcase.data.projectsLink.label %}
+      {% set projectsLabel = showcase.data.projectsLink.label %}
+    {% endif %}
+  {% endif %}
+
+  <section
+    class="showcase-section"
+    id="projects"
+  >
     <div class="showcase-section__header">
       {% if showcase.data.eyebrow %}
         <p class="eyebrow">
@@ -177,9 +339,11 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
       {% endif %}
     </div>
 
+
     <div class="showcase-stack">
 
       {# Featured CRM and RevOps systems #}
+
       {% if showcase.data.featuredSystems %}
         <article class="showcase-card showcase-card--featured">
           <header class="showcase-card__header">
@@ -216,7 +380,9 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
                     <a
                       class="showcase-project__link"
                       href="{{ system.url }}"
-                      aria-label="View project: {{ system.title }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View project: {{ system.title }} in a new tab"
                     >
                       View project
                       <span aria-hidden="true">→</span>
@@ -229,85 +395,50 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
         </article>
       {% endif %}
 
-      {# Other systems, collapsed by default #}
-      {% if showcase.data.otherSystems %}
-        <details class="showcase-card showcase-card--expandable">
-          <summary class="showcase-card__toggle">
-            <span class="showcase-card__toggle-copy">
-              {% if showcase.data.otherSystems.title %}
-                <span class="showcase-card__eyebrow">
-                  {{ showcase.data.otherSystems.title }}
-                </span>
-              {% endif %}
+    </div>
 
-              {% if showcase.data.otherSystems.summary %}
-                <span class="showcase-card__summary">
-                  {{ showcase.data.otherSystems.summary }}
-                </span>
-              {% endif %}
-            </span>
-
-            <span
-              class="showcase-card__toggle-icon"
-              aria-hidden="true"
-            >
-              +
-            </span>
-          </summary>
-
-          {% if showcase.data.otherSystems.systems %}
-            <div class="showcase-card__expanded-content">
-              <div class="showcase-projects">
-                {% for system in showcase.data.otherSystems.systems %}
-                  <article class="showcase-project">
-                    {% if system.title %}
-                      <h3 class="showcase-project__title">
-                        {{ system.title }}
-                      </h3>
-                    {% endif %}
-
-                    {% if system.summary %}
-                      <p class="showcase-project__summary">
-                        {{ system.summary }}
-                      </p>
-                    {% endif %}
-
-                    {% if system.url %}
-                      <a
-                        class="showcase-project__link"
-                        href="{{ system.url }}"
-                        aria-label="View project: {{ system.title }}"
-                      >
-                        View project
-                        <span aria-hidden="true">→</span>
-                      </a>
-                    {% endif %}
-                  </article>
-                {% endfor %}
-              </div>
-            </div>
-          {% endif %}
-        </details>
-      {% endif %}
-
+    <div class="showcase-section__footer">
+      <a
+        class="button secondary"
+        href="{{ projectsUrl }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="{{ projectsLabel }} in a new tab"
+      >
+        {{ projectsLabel }}
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 {% endif %}
 
+
+{# ==========================================================
+   WHO TECHBRIDGE IS FOR
+   Formerly who-this-is-for.md
+   ========================================================== #}
+
 {% if whoFor %}
-  <section id="who-for" class="section alt">
+  <section
+    id="who-for"
+    class="section alt"
+  >
     <div class="section-heading">
       {% if whoFor.data.eyebrow %}
-        <p class="eyebrow">{{ whoFor.data.eyebrow }}</p>
+        <p class="eyebrow">
+          {{ whoFor.data.eyebrow }}
+        </p>
       {% endif %}
 
       {% if whoFor.data.headline %}
-        <h2>{{ whoFor.data.headline }}</h2>
+        <h2>
+          {{ whoFor.data.headline }}
+        </h2>
       {% endif %}
     </div>
 
     {% if whoFor.templateContent %}
-      <div class="about">
+      <div class="about section-copy">
         {{ whoFor.templateContent | safe }}
       </div>
     {% endif %}
@@ -316,8 +447,17 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
       <div class="grid cards">
         {% for audience in whoFor.data.audiences %}
           <article class="card">
-            <h3>{{ audience.title }}</h3>
-            <p>{{ audience.summary }}</p>
+            {% if audience.title %}
+              <h3>
+                {{ audience.title }}
+              </h3>
+            {% endif %}
+
+            {% if audience.summary %}
+              <p>
+                {{ audience.summary }}
+              </p>
+            {% endif %}
 
             {% if audience.bestFor %}
               <ul>
@@ -333,38 +473,69 @@ title: TB TechBridge Consulting | Practical CRM Systems & Trusted Automation
   </section>
 {% endif %}
 
+
+{# ==========================================================
+   ABOUT
+   ========================================================== #}
+
 {% if about %}
-  <section id="about" class="section about">
+  <section
+    id="about"
+    class="section about"
+  >
     <div class="section-heading">
       {% if about.data.eyebrow %}
-        <p class="eyebrow">{{ about.data.eyebrow }}</p>
+        <p class="eyebrow">
+          {{ about.data.eyebrow }}
+        </p>
       {% endif %}
 
       {% if about.data.headline %}
-        <h2>{{ about.data.headline }}</h2>
+        <h2>
+          {{ about.data.headline }}
+        </h2>
       {% endif %}
     </div>
 
-    {{ about.templateContent | safe }}
+    {% if about.templateContent %}
+      {{ about.templateContent | safe }}
+    {% endif %}
   </section>
 {% endif %}
 
+
+{# ==========================================================
+   CONTACT
+   ========================================================== #}
+
 {% if contact %}
-  <section id="contact" class="section contact">
+  <section
+    id="contact"
+    class="section contact"
+  >
     <div>
       {% if contact.data.eyebrow %}
-        <p class="eyebrow">{{ contact.data.eyebrow }}</p>
+        <p class="eyebrow">
+          {{ contact.data.eyebrow }}
+        </p>
       {% endif %}
 
       {% if contact.data.headline %}
-        <h2>{{ contact.data.headline }}</h2>
+        <h2>
+          {{ contact.data.headline }}
+        </h2>
       {% endif %}
 
-      {{ contact.templateContent | safe }}
+      {% if contact.templateContent %}
+        {{ contact.templateContent | safe }}
+      {% endif %}
     </div>
 
     {% if contact.data.email %}
-      <a class="button primary" href="mailto:{{ contact.data.email }}">
+      <a
+        class="button primary"
+        href="mailto:{{ contact.data.email }}"
+      >
         {{ contact.data.email }}
       </a>
     {% endif %}

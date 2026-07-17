@@ -1,8 +1,0 @@
----
-order:
-kicker: 
-title: 
-summary: 
-permalink: /projects/crm-proximity-search/
-featured: true
----

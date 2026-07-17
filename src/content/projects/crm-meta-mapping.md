@@ -1,45 +1,44 @@
 ---
+layout: layouts/project-detail.njk
 order:
-kicker: 
-title: 
-summary: 
-permalink: /projects/meta-mapping/
+kicker: Featured CRM & RevOps Systems
+title: CRM Governance Visibility
+summary: A metadata-driven governance framework that maps CRM components, dependencies, and change impact so teams can understand how the platform is connected before making changes.
+permalink: /projects/crm-meta-mapping/
 featured: true
+bodyClass: project-detail-page
 ---
 
 ### Problem
 
-The problem is not simply having CRM automations. The problem is knowing what those automations touch, what they depend on, and what might break when something changes.
+As a CRM grows, fields, automations, modules, layouts, integrations, and business rules can become increasingly interconnected. A configuration change that appears isolated may affect multiple workflows, reports, data processes, or user experiences elsewhere in the platform.
 
-As a CRM grows, workflows, functions, fields, layouts, modules, and business rules can start to form a maze beneath the surface. A field may look harmless until it turns out three workflows, two Deluge functions, and a reporting process are quietly depending on it. Without a clear map, making changes can feel like Andy Dufresne crawling through five hundred yards of CRM uncertainty with only hope, persistence, and a very reasonable fear of breaking production.
+Without a reliable view of those relationships, administrators are forced to rely on memory, manual inspection, and scattered documentation. This makes routine maintenance slower and increases the risk of unintended downstream effects.
 
-### Why it matters
+### Operational Impact
 
-CRM governance directly affects system stability, data quality, user trust, and the ability to safely improve the platform. If dependencies are hidden, even small changes can create unexpected downstream issues.
+CRM governance influences system stability, data quality, user trust, and the ability to improve the platform with confidence. Hidden dependencies can turn small changes into broader operational issues, especially when legacy automation or undocumented business logic remains active.
 
-A business needs a way to understand how its CRM is wired together. Before fields are removed, workflows are changed, functions are refactored, or modules are redesigned, teams need visibility into the relationships between system components.
+A structured view of system relationships helps teams evaluate change impact before fields are retired, automations are modified, functions are refactored, or modules are redesigned.
 
-### How I approach it
+### Approach
 
-I treat CRM governance as an information architecture problem. Instead of relying on memory, manual inspection, or scattered notes, I build a structured mapping process that extracts system metadata and turns it into searchable, reportable dependency data.
+TechBridge treats CRM governance as an information architecture and change-management problem. System metadata is organized into a structured model that makes relationships between fields, automations, modules, and technical components easier to search, review, and document.
 
-I focus on making the hidden structure of the CRM visible: which workflows call which functions, which fields are referenced by automation, which modules are connected, and where legacy logic may still be influencing the system.
+The approach focuses on revealing how the platform is connected, where business logic is concentrated, and which components may require additional review before changes are introduced.
 
-### What I built
+### Solution
 
-I built a Meta Mapping framework for Zoho CRM that creates a searchable inventory of CRM automation, field usage, and system dependencies. At a high level, it includes:
+The solution is a local CRM governance framework that converts configuration metadata into searchable dependency and change-impact information. At a high level, it includes:
 
-- **Automation dependency mapping:** Indexes workflows, Deluge functions, and field references to show how CRM components are connected and where changes may create downstream impact.
-    
-- **Governance database:** Stores extracted metadata in a structured database, making CRM configuration easier to search, analyze, and maintain over time.
-    
-- **Metadata-driven web UI Impact Analysis:** Provides an easy-to-use web UI for exploring CRM dependencies and assessing change risk, with dropdowns populated from actual system metadata rather than manually maintained lists.
-    
-- **Legacy and risk visibility:** Helps identify older workflows, unused automation, duplicate logic, and areas where system behavior may no longer match the current business process.
-    
+- **Dependency mapping:** Connects fields, automations, modules, and technical components to show where configuration changes may create downstream impact.
+- **Structured governance inventory:** Organizes CRM metadata in a searchable repository that supports analysis, maintenance, and documentation over time.
+- **Change-impact exploration:** Provides an interface for reviewing component relationships and assessing implementation risk using current system metadata.
+- **Legacy and risk visibility:** Surfaces older automation, duplicated logic, inactive components, and areas where platform behavior may no longer align with current processes.
+- **Documentation support:** Produces structured reference material that helps administrators and stakeholders understand how the CRM is configured and how major components interact.
 
 ### What it demonstrates
 
-This work demonstrates my ability to think beyond individual CRM automations and build governance systems that make the entire platform easier to understand, maintain, and improve. It shows how I use metadata, automation analysis, and structured documentation to reduce risk and increase confidence in CRM change management.
+This work demonstrates the ability to move beyond individual automations and create a broader governance model for understanding CRM architecture.
 
-It also demonstrates strong systems thinking by connecting technical architecture, business process governance, data integrity, and long-term platform scalability into one cohesive visibility strategy.
+It also shows how metadata analysis, dependency visibility, documentation, and change-impact review can work together to support safer maintenance, clearer decision-making, and long-term platform scalability.
