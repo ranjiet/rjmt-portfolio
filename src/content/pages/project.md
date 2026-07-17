@@ -1,12 +1,10 @@
 ---
-layout: layouts/base.njk
+layout: layouts/projects-index.njk
 title: Projects
 description: CRM, RevOps, automation, local AI, and self-hosted systems designed around practical business and personal needs.
 permalink: /projects/
 bodyClass: projects-page
 ---
-
-# Projects
 
 A selection of CRM, RevOps, automation, local AI, and self-hosted systems designed to improve visibility, strengthen execution, and make complex processes easier to manage.
 

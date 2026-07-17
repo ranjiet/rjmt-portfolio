@@ -15,10 +15,11 @@
       <span class="brand-text">TechBridge Consulting</span>
     </a>
 
-    <nav class="nav">
-      {% for item in site.nav %}
-        <a{% if item.label == "Contact" %} class="nav-cta"{% endif %} href="{{ item.url }}">{{ item.label }}</a>
-      {% endfor %}
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="{{ '/#how-we-help' | url }}">Services</a>
+      <a href="{{ '/projects/' | url }}">Projects</a>
+      <a href="{{ '/#about' | url }}">About</a>
+      <a class="nav-cta" href="{{ '/#contact' | url }}">Contact</a>
     </nav>
   </header>
 

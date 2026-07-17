@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+---
+
+<main class="projects-index">
+
+  <header class="projects-index__hero">
+    {% if eyebrow %}
+      <p class="eyebrow">
+        {{ eyebrow }}
+      </p>
+    {% endif %}
+
+    {% if title %}
+      <h1 class="projects-index__title">
+        {{ title }}
+      </h1>
+    {% endif %}
+
+    {% if description %}
+      <p class="projects-index__intro">
+        {{ description }}
+      </p>
+    {% endif %}
+  </header>
+
+  <section
+    class="projects-index__content"
+    aria-label="TechBridge projects"
+  >
+    {{ content | safe }}
+  </section>
+
+</main>
